@@ -24,7 +24,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Abstract
 
+In this paper I study the effect of certain often used macroprudential policy tools on bilateral, cross-border banking asset holdings. I consider a gravity equation of trade in financial assets, where values for an index on the usage of prudential tools in both the country or origin and the destination country enter as frictional variables. The model is estimated using a two-stage double hurdle model to account for the large share of zero observations in the dependent variables. 
 
+For the data, codes and more, please refer to my [GitHub repository](https://github.com/anorring/PHDthesis_1st_paper). 
 
 # 1. Introduction
 
