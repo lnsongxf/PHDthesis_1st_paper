@@ -23,3 +23,52 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # Macroprudential policy, cross-border banking asset holdings and the gravity equation
+
+## Motivation for the paper:
+
+Macroprudential policy is often looked upon as a means to return the independence of monetary policy, which can be reduced by various different reasons. However, there are still large gaps in knowledge on the effectiveness of macroprudential policies, even though the field is expanding rapidly. To gain fuller understanding on the effectiveness of macroprudential policies, one should not confine considerations to the ability of prudential tools to deliver the desired outcomes inside the country implementing the policies. After all, macroprudential policy cannot be implemented in a hermetic bubble. Instead, national macroprudential policy cannot be insulated from the global financial conditions and the some leakages and spillovers from the implemented policies are unavoidable.  
+
+There is growing evidence that the effects of macroprudential instruments occasionally spill over borders through international bank lending (see e.g. a meta study of Buch and Goldberg and the research cited therein, 2016, Agénor et al., 2017) and that this may reduce the effectiveness of national macroprudential policies (e.g. Reinhardt and Sowerbutts, 2015). In the presence of large, free and fast-moving capital flows and extensive cross-border activities of large international banks, the effects of macroprudential policies are not confined in the country that implements them. Cross-border spillovers of macroprudential policy may arise e.g. when banks exploit differences in the standards of national regulation by placing their activities in countries with the least imposing regulatory requirements. This regulatory arbitrage can to some extent be mitigated by mutual recognition, often referred to as reciprocity, of macroprudential measures by the national authorities of different countries. Even though the leakages have so far been found to be rather small, they may increase as national macroprudential policies become more widespread (Buch and Goldberg, 2016). 
+
+A recently published data set compiled by the IMF (described in Cerrutti et al., 2017) provides the most extensive database to date on the use of macroprudential policies. It documents the use of various macroprudential policies in a sample of 119 countries over the years 2000-2013. This data comes from a IMF survey carried out during 2013-2014 and is called the Global Macroprudential Policy Instruments (GMPI) survey.  
+
+Cerrutti et al. (2017) use the data to conclude that usage of macroprudential policies is generally associated with lower credit growth and greater cross-border borrowing. The GMPI data could potentially be used in a myriad of setups, as pointed out by the authors. My aim is to combine it with the bilateral locational banking statistics of the BIS and find out whether the gravity model can give some insight on cross-border spillover-effects of macroprudential tools on bank asset holdings. The locational banking statistics compiled by BIS allow for building a coherent country-to-country network of cross-border banking assets holdings in bilateral terms, as shown by Brei and von Peter (2017), with every observation being associated with a country of origin (i.e. the country where the banks operate) and a destination country (i.e. the country of which the counterparties of the banks are residents).
+
+## Reasearch questions and hypotheses
+
+The gravity model in its most simple form relates a bilateral trade flow or financial asset holding between two countries to the financial masses (usually GDPs) of both countries and the distance between them. Distance is thought to serve as a proxy for different information frictions that hinder trade, but also as a friction to trade in its own right. It is common to control for other possible variables that may increase or decrease the frictions of trade between the two countries.  
+
+My idea is to find out whether after taking into account the usual variables (distance, contiguity, common official language, colonial relationship etc.) the usage of macroprudential tools in the country of origin or in the destination country plays any role. Thus my research questions are thus the following:  
+
+> Q1: Can the gravity model tell us something about the cross-border spillovers of macroprudential tools? 
+
+> Q2: What is the effect of certain often used macroprudential tools on bilateral, cross-border banking asset holdings?
+
+The GMPI data gives two aggregate measures of macroprudential tools based on the target of the instruments. The measures are categorized in two: into measures aimed at borrowers’ leverage and financial positions (the loan-to-value or debt-to-income ratios) and measures aimed at the capital requirements of financial institutions (such as countercyclical or systemic capital buffers or limits on leverage ratios). The dataset also provides and overall macroprudential index which aggregates together all classes of prudential tools. However, using this overall index would not be sensible, because the effects of the two classes on cross-border lending should be different.  
+
+I formulate my two primary hypotheses as follows: 
+
+> H1: Tightening capital requirements for *financial institutions* leads to domestic agents borrowing more abroad.
+
+This happens because as capital requirements increase, the weighted average cost of capital for banks subject to this measure increases. Usually this prudential tool applies to domestic banks and subsidiaries of foreign banks, but not branches of foreign banks. Thus a funding advantage is created for foreign banks and borrowing from foreign banks should increase. Tighter capital requirements for domestic banks could also lead to domestic banks reducing cross-border activities to better comply with the more stringent regulation.  
+
+That is, we should expect higher banking flows from the country of origin to the destination country if the destination country  implements or tightens the stance of a prudential tool targeted at financial institutions. A lower level of banking assets held by country of origin banks in the destination country should be associated with tighter capital requirements in the country of origin.  
+
+Prudential tools that target domestic borrowers should not however have the similar effect. In fact, as this type of regulation usually applies to all borrowers in a given country and thus foreign banks will not gain a funding advantage. The regulation might however affect banking flows if banks move lending to less heavily regulated markets. Specifically:  
+
+> H2: Tightening regulation that applies to domestic *borrowers* does not necessarily lead to more borrowing from abroad.
+
+In this case, a tightening of regulation in the destination country should lower the level of banking assets held by country of origin banks in the destination country. A tightening of regulation in the country of origin should have the opposite effect.
+
+
+## Data:
+
+
+
+## Methodology:
+
+
+
+## Preliminary results:
+
+My preliminary results show that the variables of interest, i.e. the ones measuring the usage of macroprudential policy, have a statistically significant effect on bilateral bank asset holdings in all considered specifications. The effects are also broadly in line with the above formulated hypotheses. as noted, these are results are however preliminary and require further robustness checks.
