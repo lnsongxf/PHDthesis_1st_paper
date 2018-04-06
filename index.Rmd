@@ -1,0 +1,25 @@
+---
+title: "First paper of my PhD thesis"
+author: 
+- name: "Anni Norring"
+  affiliation: "anni.norring@helsinki.fi"
+date: "2018"
+output:
+  html_document:
+    theme: cosmo
+    toc: true
+    toc_float: true
+    toc_depth: 3
+    fig_caption: true
+    fig_width: 6
+    fig_height: 4
+    code_folding: hide
+ 
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Macroprudential policy, cross-border banking asset holdings and the gravity equation
