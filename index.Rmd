@@ -77,7 +77,7 @@ In this case, a tightening of regulation in the destination country should lower
 
 ## Preliminary results:
 
-My preliminary results show that the variables of interest, i.e. the ones measuring the usage of macroprudential policy, have a statistically significant effect on bilateral bank asset holdings in all considered specifications. The effects are also broadly in line with the above formulated hypotheses. as noted, these are results are however preliminary and require further robustness checks.
+My preliminary results show that the variables of interest, i.e. the ones measuring the usage of macroprudential policy, have a statistically significant effect on bilateral bank asset holdings in all considered specifications. The effects are also broadly in line with the above formulated hypotheses. As noted, these results are however preliminary and require further robustness checks.
 
 ## Set-up of the paper
 
