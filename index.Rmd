@@ -1,5 +1,5 @@
 ---
-title: "First paper of my PhD thesis"
+title: "Macroprudential policy, cross-border banking asset holdings and the gravity equation (preliminary version)"
 author: 
 - name: "Anni Norring"
   affiliation: "anni.norring@helsinki.fi"
@@ -22,7 +22,11 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Macroprudential policy, cross-border banking asset holdings and the gravity equation
+# Abstract
+
+
+
+# 1. Introduction
 
 ## Motivation for the paper:
 
@@ -63,12 +67,48 @@ In this case, a tightening of regulation in the destination country should lower
 
 ## Data:
 
-
+(cont.)
 
 ## Methodology:
 
-
+(cont.)
 
 ## Preliminary results:
 
 My preliminary results show that the variables of interest, i.e. the ones measuring the usage of macroprudential policy, have a statistically significant effect on bilateral bank asset holdings in all considered specifications. The effects are also broadly in line with the above formulated hypotheses. as noted, these are results are however preliminary and require further robustness checks.
+
+## Set-up of the paper
+
+
+
+# 2. Related literature
+
+This paper is related to multiple strands of literature. First, my paper is related to the broad field on the effects of macroprudential policy. More specifically, I contribute to the literature on the cross-border effects of macroprudential policy, or regulatory spillovers and leakages associated with macroprudential policy tools. Second, my results also add to the knowledge on what affects international banking flows. Finally, my paper provides an application of the gravity model and the double-stage estimation techniques for bilateral cross-border banking flows.
+
+(cont.)
+
+# 3. The model
+
+(cont.)
+
+# 4. Data
+
+(cont.)
+
+# 5. Methodology
+
+(cont.)
+
+# 6. Results
+
+(cont.)
+
+# 7. Conclusions
+
+(cont.)
+
+# References
+
+(cont.)
+
+
