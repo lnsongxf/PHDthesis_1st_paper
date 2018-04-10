@@ -69,11 +69,11 @@ In this case, a tightening of regulation in the destination country should lower
 
 ## Data:
 
-(cont.)
+(work in progress)
 
 ## Methodology:
 
-(cont.)
+(work in progress)
 
 ## Preliminary results:
 
@@ -87,30 +87,30 @@ My preliminary results show that the variables of interest, i.e. the ones measur
 
 This paper is related to multiple strands of literature. First, my paper is related to the broad field on the effects of macroprudential policy. More specifically, I contribute to the literature on the cross-border effects of macroprudential policy, or regulatory spillovers and leakages associated with macroprudential policy tools. Second, my results also add to the knowledge on what affects international banking flows. Finally, my paper provides an application of the gravity model and the double-stage estimation techniques for bilateral cross-border banking flows.
 
-(cont.)
+(work in progress)
 
 # 3. The model
 
-(cont.)
+(work in progress)
 
 # 4. Data
 
-(cont.)
+(work in progress)
 
 # 5. Methodology
 
-(cont.)
+(work in progress)
 
 # 6. Results
 
-(cont.)
+(work in progress)
 
 # 7. Conclusions
 
-(cont.)
+(work in progress)
 
 # References
 
-(cont.)
+(work in progress)
 
 
