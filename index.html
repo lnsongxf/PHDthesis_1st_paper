@@ -244,55 +244,16 @@ div.tocify {
 <div id="abstract" class="section level1">
 <h1>Abstract</h1>
 <p>In this paper I study the effect of certain often used macroprudential policy tools on bilateral, cross-border banking asset holdings. I consider a gravity equation of trade in financial assets, where values for an index on the usage of prudential tools in both the country or origin and the destination country enter as frictional variables. The model is estimated using a two-stage double hurdle model to account for the large share of zero observations in the dependent variables.</p>
+<p>My preliminary results show that the variables of interest, i.e. the ones measuring the usage of macroprudential policy, have a statistically significant effect on bilateral bank asset holdings in all considered specifications. The effects are also broadly in line with the formulated hypotheses. These results are however preliminary and still require further robustness checks.</p>
 <p>For the data, codes and more, please refer to my <a href="https://github.com/anorring/PHDthesis_1st_paper">GitHub repository</a>.</p>
 </div>
 <div id="introduction" class="section level1">
 <h1>1. Introduction</h1>
-<div id="motivation-for-the-paper" class="section level2">
-<h2>Motivation for the paper:</h2>
 <p>Macroprudential policy is often looked upon as a means to return the independence of monetary policy, which can be reduced by various different reasons. However, there are still large gaps in knowledge on the effectiveness of macroprudential policies, even though the field is expanding rapidly. To gain fuller understanding on the effectiveness of macroprudential policies, one should not confine considerations to the ability of prudential tools to deliver the desired outcomes inside the country implementing the policies. After all, macroprudential policy cannot be implemented in a hermetic bubble. Instead, national macroprudential policy cannot be insulated from the global financial conditions and the some leakages and spillovers from the implemented policies are unavoidable.</p>
 <p>There is growing evidence that the effects of macroprudential instruments occasionally spill over borders through international bank lending (see e.g. a meta study of Buch and Goldberg and the research cited therein, 2016, Agénor et al., 2017) and that this may reduce the effectiveness of national macroprudential policies (e.g. Reinhardt and Sowerbutts, 2015). In the presence of large, free and fast-moving capital flows and extensive cross-border activities of large international banks, the effects of macroprudential policies are not confined in the country that implements them. Cross-border spillovers of macroprudential policy may arise e.g. when banks exploit differences in the standards of national regulation by placing their activities in countries with the least imposing regulatory requirements. This regulatory arbitrage can to some extent be mitigated by mutual recognition, often referred to as reciprocity, of macroprudential measures by the national authorities of different countries. Even though the leakages have so far been found to be rather small, they may increase as national macroprudential policies become more widespread (Buch and Goldberg, 2016).</p>
-<p>A recently published data set compiled by the IMF (described in Cerrutti et al., 2017) provides the most extensive database to date on the use of macroprudential policies. It documents the use of various macroprudential policies in a sample of 119 countries over the years 2000-2013. This data comes from a IMF survey carried out during 2013-2014 and is called the Global Macroprudential Policy Instruments (GMPI) survey.</p>
-<p>Cerrutti et al. (2017) use the data to conclude that usage of macroprudential policies is generally associated with lower credit growth and greater cross-border borrowing. The GMPI data could potentially be used in a myriad of setups, as pointed out by the authors. My aim is to combine it with the bilateral locational banking statistics of the BIS and find out whether the gravity model can give some insight on cross-border spillover-effects of macroprudential tools on bank asset holdings. The locational banking statistics compiled by BIS allow for building a coherent country-to-country network of cross-border banking assets holdings in bilateral terms, as shown by Brei and von Peter (2017), with every observation being associated with a country of origin (i.e. the country where the banks operate) and a destination country (i.e. the country of which the counterparties of the banks are residents).</p>
-</div>
-<div id="reasearch-questions-and-hypotheses" class="section level2">
-<h2>Reasearch questions and hypotheses</h2>
-<p>The gravity model in its most simple form relates a bilateral trade flow or financial asset holding between two countries to the financial masses (usually GDPs) of both countries and the distance between them. Distance is thought to serve as a proxy for different information frictions that hinder trade, but also as a friction to trade in its own right. It is common to control for other possible variables that may increase or decrease the frictions of trade between the two countries.</p>
-<p>My idea is to find out whether after taking into account the usual variables (distance, contiguity, common official language, colonial relationship etc.) the usage of macroprudential tools in the country of origin or in the destination country plays any role. Thus my research questions are thus the following:</p>
-<blockquote>
-<p>Q1: Can the gravity model tell us something about the cross-border spillovers of macroprudential tools?</p>
-</blockquote>
-<blockquote>
-<p>Q2: What is the effect of certain often used macroprudential tools on bilateral, cross-border banking asset holdings?</p>
-</blockquote>
-<p>The GMPI data gives two aggregate measures of macroprudential tools based on the target of the instruments. The measures are categorized in two: into measures aimed at borrowers’ leverage and financial positions (the loan-to-value or debt-to-income ratios) and measures aimed at the capital requirements of financial institutions (such as countercyclical or systemic capital buffers or limits on leverage ratios). The dataset also provides and overall macroprudential index which aggregates together all classes of prudential tools. However, using this overall index would not be sensible, because the effects of the two classes on cross-border lending should be different.</p>
-<p>I formulate my two primary hypotheses as follows:</p>
-<blockquote>
-<p>H1: Tightening capital requirements for <em>financial institutions</em> leads to domestic agents borrowing more abroad.</p>
-</blockquote>
-<p>This happens because as capital requirements increase, the weighted average cost of capital for banks subject to this measure increases. Usually this prudential tool applies to domestic banks and subsidiaries of foreign banks, but not branches of foreign banks. Thus a funding advantage is created for foreign banks and borrowing from foreign banks should increase. Tighter capital requirements for domestic banks could also lead to domestic banks reducing cross-border activities to better comply with the more stringent regulation.</p>
-<p>That is, we should expect higher banking flows from the country of origin to the destination country if the destination country implements or tightens the stance of a prudential tool targeted at financial institutions. A lower level of banking assets held by country of origin banks in the destination country should be associated with tighter capital requirements in the country of origin.</p>
-<p>Prudential tools that target domestic borrowers should not however have the similar effect. In fact, as this type of regulation usually applies to all borrowers in a given country and thus foreign banks will not gain a funding advantage. The regulation might however affect banking flows if banks move lending to less heavily regulated markets. Specifically:</p>
-<blockquote>
-<p>H2: Tightening regulation that applies to domestic <em>borrowers</em> does not necessarily lead to more borrowing from abroad.</p>
-</blockquote>
-<p>In this case, a tightening of regulation in the destination country should lower the level of banking assets held by country of origin banks in the destination country. A tightening of regulation in the country of origin should have the opposite effect.</p>
-</div>
-<div id="data" class="section level2">
-<h2>Data:</h2>
-<p>(work in progress)</p>
-</div>
-<div id="methodology" class="section level2">
-<h2>Methodology:</h2>
-<p>(work in progress)</p>
-</div>
-<div id="preliminary-results" class="section level2">
-<h2>Preliminary results:</h2>
-<p>My preliminary results show that the variables of interest, i.e. the ones measuring the usage of macroprudential policy, have a statistically significant effect on bilateral bank asset holdings in all considered specifications. The effects are also broadly in line with the above formulated hypotheses. As noted, these results are however preliminary and require further robustness checks.</p>
-</div>
-<div id="set-up-of-the-paper" class="section level2">
-<h2>Set-up of the paper</h2>
-</div>
+<p>A recently published data set compiled by the IMF (described in Cerrutti et al., 2017) provides the most extensive database to date on the use of macroprudential policies. It documents the use of various macroprudential policies in a sample of 119 countries over the years 2000-2013. This data comes from a IMF survey carried out during 2013-2014 and is called the Global Macroprudential Policy Instruments (GMPI) survey. Cerrutti et al. (2017) use the data to conclude that usage of macroprudential policies is generally associated with lower credit growth and greater cross-border borrowing.</p>
+<p>The GMPI data could potentially be used in a myriad of setups, as pointed out by Cerrutti et al. (2017). I combine the data on the use of prudential tools with the bilateral locational banking statistics compiled by the Bank of International Settlements (BIS). My goal is then to find out whether the gravity model of cross-border trade in financial assets can give some insight on cross-border spillover-effects of macroprudential tools on bank asset holdings. Specifically, I consider whether after taking into account the usual frictional variables of the gravity set-up, the use of prudential tools will have and effect on bilateral cross-border banking asset holdings.</p>
+<p>The rest of the paper is organized as follows. The related literature is reviewed by strands in section 2. My research questions, hypothesis and model are formulated and discussed in section 3. In section 4 the data are presented and in section 5 the methodology chosen. The empirical results are presented in section 6. Section 7 concludes.</p>
 </div>
 <div id="related-literature" class="section level1">
 <h1>2. Related literature</h1>
@@ -303,11 +264,11 @@ div.tocify {
 <h1>3. The model</h1>
 <p>(work in progress)</p>
 </div>
-<div id="data-1" class="section level1">
+<div id="data" class="section level1">
 <h1>4. Data</h1>
 <p>(work in progress)</p>
 </div>
-<div id="methodology-1" class="section level1">
+<div id="methodology" class="section level1">
 <h1>5. Methodology</h1>
 <p>(work in progress)</p>
 </div>
@@ -322,6 +283,67 @@ div.tocify {
 <div id="references" class="section level1">
 <h1>References</h1>
 <p>(work in progress)</p>
+<p>Agénor P., Gambacorta L., Kharroubi E., Lombardo G. and Pereira da Silva L., 2017. “The international dimensions of macroprudential policies”. BIS Working papers, No 643.</p>
+<p>Aiyar, S., Calomiris, C. W., Wieladek, T., 2014. “Does Macro-Pru Leak? Empirical Evidence from a UK Natural Experiment.” Journal of Money, Credit and Banking 46, 181-214.</p>
+<p>Apergis, N., 2017. “Monetary policy and macroprudential policy: new evidence from a world panel of countries”. Oxford bulletin of economics and statistics, 79, 3 (2017) 0305-9049.</p>
+<p>Blanchard, O., Dell’Ariccia, G., Mauro, P., 2010. “Rethinking macroeconomic policy”. IMF Staff Position Note SPN/10/03.</p>
+<p>Blanchard, O., Galí, J., 2007. Real wage rigidities and the new keynesian model. Journal Money, Credit and Banking. 39 (s1), 35–65.</p>
+<p>Borio, C., 2009. “Implementing the macroprudential approach to financial regulation and supervision”. Banque de France Financial Stability Review No. 13.</p>
+<p>Borio, C., 2011. “Implementing a macroprudential framework: blending boldness and realism”. Capitalism and Society, 6(1):1-25.</p>
+<p>Boyer, P., Kepf, H., 2016. “Regulatory arbitrage and the efficiency of banking regulation”. BAFFI CAREFIN Centre Research Paper No. 2016-18.</p>
+<p>Bruno, V., Shim, I., Shin, H.S., 2017. “Comparative assessment of macroprudential policies”. Journal of Financial Stability, 28 (2017) 183-202.</p>
+<p>Bruno, V., Shin, H. S., 2015. “Capital flows and the risk-taking channel of monetary policy.” Journal of Monetary Economics, 71, 119-32.</p>
+<p>Buch, C., Goldberg, L., 2016. “Cross-border prudential policy spillovers: How much? How important? Evidence from the international banking research network”. NBER Working Paper 22874.</p>
+<p>Calvo, G. A., Leiderman, L., Reinhart, C. M., 1996. “Inflows of capital to developing countries in the 1990s”. Journal of Economic Perspectives, Vol. 10, No. 2, pp. 123-39.</p>
+<p>Carvalho, F., Castro, M., 2017. “Macroprudential policy transmission and interaction with fiscal and monetary policy in an emerging economy: a DSGE model for Brazil”. Banco Central do Brasil Working Paper Series, 453.</p>
+<p>Cerutti, E., Claessens, S., Rose, A. K., 2017. “How important is the global financial cycle? Evidence from capital flows”. CEPR Discussion paper 12075.</p>
+<p>Cetorelli, N., Goldberg, L., 2012. “Banking globalization and monetary transmission”. The Journal of Finance, vol. 67, No. 5, pp. 1811-43.</p>
+<p>Chen W., Phelan G., 2017. “Macroprudential policy coordination with international capital flows”.</p>
+<p>Chinn, M.D., Ito, H., 2008. “A new measure of financial openness”. Journal of Comparative Policy Analysis 10 (3), 309–322.</p>
+<p>Claessens, S., Ghosh, S., Mihet, R., 2013. “Macroprudential policies to mitigate financial system vulnerabilities”. Journal of International Money and Finance 39, 153–185.</p>
+<p>Clancy D., Merola R., 2017. “Countercyclical capital rules for small open economies”. Journal of Macroeconomics, 000 (2017) 1-20.</p>
+<p>Couppey-Soybeyran J., Dehmej S., 2017. “The role of macro-prudential policy in the prevention and correction of divergences in the euro area”.</p>
+<p>Davis J.S., Presno I., 2017. “Capital controls and monetary policy autonomy in a small open economy”. Journal of Monetary Economics, 85, 114-130.</p>
+<p>Dehmej S., Gambacorta L. (2015/17). “Macroprudential policy in a monetary union”. Available at <a href="https://economix.fr/fr/recrutement/2016/jpo-2016/1-%20Dehmej.pdf">https://economix.fr/fr/recrutement/2016/jpo-2016/1-%20Dehmej.pdf</a>.</p>
+<p>Dell’Ariccia, G., Igan, D., Laeven, L., Tong, H., Bakker, B., Vandenbussche, J., 2012. “Policies for macrofinancial stability: how to deal with credit booms”. IMF Staff Discussion Note 12/06.</p>
+<p>Eichengreen, 1992. “Golden Fetters: The Gold Standard and the Great Depression, 1919–39”. Oxford University Press.</p>
+<p>Engel, Charles. 2009. “Exchange Rate Policies.” Federal Reserve Bank of Dallas Staff Papers, no. 8, 2009.</p>
+<p>Engel, C., 2015. “Macroprudential policy in a world of high capital mobility: policy implications from an academic perspective”. NBER Working Papers, No 20951.</p>
+<p>Farhi, E., Werning, I., 2016. “A theory of macroprudential policies in the presence of nominal rigidities”. Econometrica, Vol. 84, No. 5, 1645-1704.</p>
+<p>Fendoglu, S. (2017). “Credit cycles and capital flows: effectiveness of the macroprudential policy framework in emerging market economies”. Journal of Banking and Finance, 79, 110-128.</p>
+<p>Fleming, M., 1962. “Domestic financial policies under fixed and under floating exchange rates”. IMF staff papers, Vol. 9, No. 3, pp. 369-80.</p>
+<p>Forbes, K.J., Warnock, F.E., 2012. “Capital flow waves: Surges, stops, flight and retrenchment”. Journal of International Economics 88(2): 235-51.</p>
+<p>Galati, G., Moessner, R., 2013. “Macroprudential policy - a literature review”. Journal of economic surveys, Vol. 27, No. 5, pp. 846-78.</p>
+<p>Goldberg, L., 2013. “Banking Globalization, Transmission, and Monetary Policy Autonomy.” Sveriges Riksbank Economic Review, Vol. 3, pp. 161–93.</p>
+<p>Gourinchas, P.-O., Obstfeld, M., 2012. “Stories of the Twentieth Century for the Twenty-First.” American Economic Journal: Macroeconomics, Vol. 4, No. 1, pp. 226–65.</p>
+<p>International Monetary Fund (IMF), 2011. “Macroprudential policy: an organizing framework”. Prepared by the Monetary and Capital Markets Department.</p>
+<p>Jeanne, O., 2012. “Capital Flow Management.” American Economic Review Papers and Proceedings 102, 203-206.</p>
+<p>Jorda, O., Schularick, M., Taylor, A., 2011. “Financial crises, credit booms, and external imbalances: 140 years of lessons”. IMF Economic Review 59, 340–378.</p>
+<p>Klein, M. W., Shambaugh, J. C., 2013. “Rounding the Corners of the Policy Trilemma: Sources of Monetary Policy Autonomy.” NBER Working Papers 19461.</p>
+<p>Korinek, A., 2011a. “Hot Money and Serial Financial Crises.” IMF Economic Review 59, 306-339.</p>
+<p>Korinek, A., 2011b. “The New Economics of Prudential Capital Controls: A Research Agenda.” IMF Economic Review 59, 523-561.</p>
+<p>Korinek, A., Sandri, D., 2014. “Capital controls or macroprudential regulation?” NBER Working Paper No. 20805.</p>
+<p>Longstaff, F. A., Pan, J., Pedersen, L. H., Singleton, K. J., 2011. “How sovereign is sovereign credit risk?”. American Economic Journal: Macroeconomics, Vol. 3, No. 2, pp. 75-103.</p>
+<p>McCauley, R., McGuire, P., Sushko, V., 2015. “Global dollar credit”. Economic Policy, April 2015, pp. 187-229.</p>
+<p>Miranda-Agrippino, S., Rey, H., 2015. “World asset markets and the global financial cycle”. CEPR DP 10936, NBER Working Paper No. 21722.</p>
+<p>Meller, B., Metiu, N., 2017. “The synchronization of credit cycles”. Journal of Banking and Finance 82, 98-111.</p>
+<p>Mundell, R., 1963. “Capital mobility and stabilization policy under fixed and flexible exchange rates”. Canadian Journal of Economic and Political Science, Vol. 29, No. 4, pp. 475-85.</p>
+<p>Obstfeld, M., 2015. “Trilemmas and trade offs: Living with financial globalization”. BIS Working Paper no. 480.</p>
+<p>Obstfeld, M., Shambaugh, J. C., Taylor, A. M., 2005. “The trilemma in history: tradeoffs among exchange rates, monetary policies, and capital mobility”. Review of Economics and Statistics, 87 (3), 423–438.</p>
+<p>Passari, E., Rey, H., 2015. “Financial flows and the international monetary system”. The Economic Journal, Vol. 125, No.584, pp. 675-98.</p>
+<p>Portes, R., Rey, H., 2005. “The determinants of cross-border equity flows”. Journal of International Economics vol. 65, pp. 269-296.</p>
+<p>Poutineau, J., Vermandel, G., 2017. “Global banking and the conduct of macroprudential policy in a monetary union”. Journal of Macroeconomics (2017) 1-26.</p>
+<p>Raddatz, D. Saravia, and J. Ventura of Central Banking, Analysis, and Economic Policies Book Series (Central Bank of Chile), Chapter 2, pp. 13-78.</p>
+<p>Reinhardt, D., Sowerbutts, R., 2015. “Regulatory arbitrage in action: evidence from banking flows and macroprudential policy”. Bank of England Staff Working Paper No. 546.</p>
+<p>Reinhart, C., Rogoff, K., 2009. This Time Is Different: Eight Centuries of Financial Folly. Princeton University Press.</p>
+<p>Rey, H., 2013. “Dilemma not trilemma: the global financial cycle and monetary policy independence”. Proceedings - Economic Policy Symposium. Jackson Hole: Federal Reserve of Kansas City Economic Symposium, 285-333.</p>
+<p>Rey, H., 2015. “Dilemma not trilemma: the global financial cycle and monetary policy independence”. NBER Working paper No. 21162.</p>
+<p>Rey, H., 2016. “International channels of transmission of monetary policy and the Mundellian trilemma”. IMF Economic Review, vol. 64, No. 1.</p>
+<p>Rochet, J.-C., 2017. “Macroprudential and systemic risk - an overview of recent developments”. A presentation at the Second annual ECB macroprudential policy and research conference. Available at <a href="https://www.ecb.europa.eu/pub/conferences/html/20170511_2nd_mp_policy_research_conf.en.html" class="uri">https://www.ecb.europa.eu/pub/conferences/html/20170511_2nd_mp_policy_research_conf.en.html</a>.</p>
+<p>Schularick, M., Taylor, A. M., 2012. “Credit Booms Gone Bust: Monetary Policy, Leverage Cycles, and Financial Crises, 1870-2008”. American Economic Review, vol. 102, pp. 1029-1061.</p>
+<p>Schoenmaker, D.,Wierts, P.J., 2011. “Macroprudential Policy: The Need for a Coherent Policy Framework”. DSF Policy Paper 13. Duisenberg School of Finance, Amsterdam, the Netherlands.</p>
+<p>Schwanebeck, B., Palek, J., 2016. “Optimal Monetary and Macroprudential Policy in a Currency Union”. Beiträge zur Jahrestagung des Vereins für Socialpolitik 2016: Demographischer Wandel - Session: Monetary Policy, No. B17-V1.</p>
+<p>Shin, H. S., 2012. “Global banking glut and the loan risk premium”. IMF Economic Review, Vol. 60, No. 2, pp. 155-92.</p>
 </div>
 
 
