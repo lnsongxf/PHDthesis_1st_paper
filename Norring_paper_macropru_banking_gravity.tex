@@ -1,0 +1,609 @@
+\documentclass[12pt,a4paper]{article}
+\linespread{1.5}
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=3cm,left=3.5cm,right=3.5cm,marginparwidth=1.75cm]{geometry}
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{ae,aecompl}
+\usepackage{url}
+\usepackage[pdftex]{hyperref}
+\hypersetup{colorlinks,%
+citecolor=black,%
+filecolor=black,%
+linkcolor=black,%
+urlcolor=black,%
+pdftex}
+
+\newtheorem{hyp}{Hypothesis}
+
+\title{Macroprudential policy spillovers and international banking - Taking the gravity approach}
+\author{Anni Norring\\University of Helsinki\\Faculty of Social Sciences, Economics\\anni.norring@helsinki.fi\\ \\Preliminary draft}
+\date{June 2018}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent In this paper I study whether the effects macroprudential policy leak across borders through international banking. I combine data on bilateral bank asset holdings between 117 countries with a recently compiled dataset on the use of macroprudential tools. I consider a gravity equation of trade in financial assets, where the use of different macroprudential tools enter as friction variables. My findings from a PPML estimation support the gravity approach and the existence of rather limited cross-border spillovers from macroprudential policies. 
+\end{abstract}
+
+\thispagestyle{empty}
+\cleardoublepage
+
+\newpage
+\thispagestyle{empty}
+\tableofcontents
+
+\newpage
+\thispagestyle{empty}
+\listoffigures
+\listoftables
+
+\newpage
+\pagenumbering{arabic}
+
+\section{Introduction}
+
+%\textit{<Motivation for studying the spillover effect of macroprudential policies}\\
+% < add a definition of macroprudential policy in a footnote
+The proliferation of the use of macroprudential instruments after the financial crisis has been rapid and widespread. Macroprudential policy as a distinctive framework of economic policy is such a recent development that research on macroprudential policy is still limited relative to the study of other policy frameworks. Even though the field has expanded rapidly, there remains substantial gaps in knowledge about the use of macroprudential tools, their effectiveness and transmission mechanisms. To gain fuller understanding on the effectiveness of macroprudential policies, one should not restrict considerations to the ability of prudential tools to deliver the desired outcomes inside the country implementing the policies. After all, macroprudential policy cannot be implemented in a hermetic bubble, and thus some leakages and spillovers from the use of macroprudential instruments are unavoidable. This paper sets out to add on the knowledge on the cross-border spillovers from macroprudential policies. 
+
+%\textit{<What is known about the spill-overs of prudential tools?}\\
+% <define spillovers, see Buch and Goldberg
+There is growing evidence that the effects of macroprudential instruments occasionally spill over borders through international bank lending (see e.g. a meta study of Buch and Goldberg and the research cited therein, 2016, Agénor et al., 2017) and that this may reduce the effectiveness of national macroprudential policies (e.g. Reinhardt and Sowerbutts, 2015). In the presence of large and fast-moving capital flows and extensive cross-border activities of internationally active banks, the effects of macroprudential policies are not confined to the country that implements them. Cross-border spillovers of macroprudential policy may arise e.g. when banks exploit differences in the standards of national regulation by placing their activities in countries with the least imposing regulatory requirements. This regulatory arbitrage can to some extent be mitigated by mutual recognition, often referred to as reciprocity, of macroprudential measures by the national authorities of different countries\footnote{See e.g. Agénor et al. (2017), Chen and Phelan (2017), and Engel (2015).}. Even though the leakages have so far been found to be rather small, they may increase as national macroprudential policies become more widespread (Buch and Goldberg, 2016). My results support the notion that the effects of macroprudential tools leak across borders through international lending, but my approach allows for a more detailed look at the direction of the spillovers than what has been previously available in the literature.
+
+%\textit{<New dataset on prudential tools:}\\
+Multi-country empirical research on the effectiveness of macroprudential policy has been limited by the lack of data. This has been due to the fact that the formal macroprudential framework is still in many ways taking shape. Further complicating comparative analysis, instead of a single widely used policy instrument such as the policy rate in monetary policy, there are a multitude of different macroprudential tools, each implemented with differences in scope, intensity and details by different countries. A recently published data set (combiled by and described in Cerrutti et al., 2017) is the first attempt to stand up to the task of documenting the use of these tools across a large set of countries. The data provides the most extensive database to date on the use of macroprudential policies by documenting the various macroprudential policies implemented in a sample of 119 countries over the years 2000-2013. Most of this data comes from the Global Macroprudential Policy Instruments (GMPI) survey carried out by the IMF during 2013-2014. Cerrutti et al. (2017) complement this data with different smaller sources. In addition to compiling and describing the data, they use it to conclude that usage of macroprudential policies is generally associated with lower credit growth in the domestic economy and greater cross-border borrowing (i.e. cross-border spillover of macroprudential policy).
+
+%\textit{<The goal of this paper:}\\
+The GMPI data could potentially be used in a myriad of setups, as pointed out by Cerrutti et al. (2017). I combine this data with a network of bilateral banks asset holdings, which I build using the locational banking statistics compiled by the Bank of International Settlements (BIS). To my knowledge, my paper is the first one to consider these data together. My goal is then to find out whether the gravity model of cross-border trade in financial assets\footnote{As first proposed by Portes and Rey, 2005, and the basis of a fast-expanding strand of literature for the past 10 years. See Head and Mayer, 2014, for a thorough survey, and Brei and von Peter, 2018, for a recent paper with an application to international bank lending.} can give some insight on cross-border spillover-effects of macroprudential tools on bank asset holdings. Specifically, I consider whether after taking into account the usual frictional variables of the gravity set-up, the use of prudential tools will have an effect on bilateral cross-border banking asset holdings. I am aware of only one paper, Houston et al. (2012), that explicitly considers the effects of regulation on international bank activity in the gravity framework, but with different data and without a explicit focus on macroprudential policy. 
+% < Check for other papers that consider regulation in the gravity framework.
+
+Building a gravity-type model is relatively straightforward, but estimating one is not. The nature of the bilateral data required by the framework is usually characterized by at least a non-negligible, and often large share of zero observations, and heteroskedasticity. The common approach of log-linearizing the gravity equation, considering only the positive observations (i.e. the intensive margin) and estimating the determinants of the gravity equation using a OLS method have been shown to lead to biased estimates (e.g. Santos Silva and Tenreyro, 2006, Brei and von Peter, 2018). Still, this approach is surprisingly widely used, especially when the gravity framework is applied outside the international trade literature. In this paper I will use the theory-consistent Poisson pseudo-maximum-likelihood method proposed by Santos Silva and Tenreyro (2006). 
+
+%\textit{<The set-up of the paper:}\\
+The rest of the paper is organized as follows. The related literature is reviewed by strands in section 2. My research questions and the model are formulated and discussed in section 3. Data is presented in section 4 and the methodology and results in section 5. Section 6 concludes. 
+
+\newpage
+\section{Related literature}
+
+This paper contributes to two strands of literature. First, my paper is related to the broad field of papers on the effects of macroprudential policy. More specifically, I contribute to the literature on the cross-border effects of macroprudential policy, or regulatory spillovers and leakages associated with macroprudential policy tools. Second, my results add to the knowledge on what affects international banking flows by providing an application of the gravity model for bilateral cross-border bank holdings and estimating the model with a theory-consistent method.
+
+\subsection{On the effects of macroprudential policy}
+
+As the active use of macroprudential framework in the sense it is currently understood in the advanced economies is quite a recent development, there are still large gaps in knowledge on the long-term macroeconomic effects and effectiveness of macroprudential policy. Because formal macroprudential policy frameworks have been put up en masse only after the global financial crisis, the discussion is still quite new and the definitions may not be well established. Also, there are not very long time series of data on the use of macroprudential policy, that would allow for definitive conclusions to be made on the framework's effectiveness, at least on the measures most used in advanced economies. In 2013 Galati and Moessner noted that research on macroprudential policy is “still in its infancy” and “far from being able to provide the analytical underpinning for policy frameworks”. Even though the literature on macroprudential policy has expanded rapidly, much of the above is still accurate. The overall evidence on the effectiveness of macroprudential policies should still be considered preliminary, as pointed out by Cerrutti et al. (2017). The challenge is that there is not one primary instrument that would have risen from the broad range of possible macroprudential tools, taking a role comparable to the policy rate, which takes the primary role in the implementation of monetary policy. This makes the comparative assessment of macroprudential policies complicated. Further complicating the research, the differing objectives and instruments of monetary, macroprudential, microprudential and fiscal policy are not clearly distinguishable but sometimes very closely interrelated (see e.g. Schoenmaker and Wierts, 2011).
+
+Keeping these caveats in mind, there is however a growing body of evidence on the effectiveness of macroprudential policy. Cerrutti et al. (2017) find that macroprudential policies in general can have a significant effect on credit growth, but these effects are specific to both the instrument used and the country implementing the policy. They find that especially borrower-based and financial institutions-based policies appear to reduce credit growth. To motivate their theoretical model, Agénor et al. (2017) provide preliminary results which suggest that macroprudential tools have effects on macroprudential volatility. Fendoglu (2017) considers emerging economies and finds that an overall tightening in the macroprudential policy stance is effective in containing credit cycles. He credits borrower-based measures and stricter domestic reserve requirements to be the most effective tools. Dell’Ariccia et al. (2012) report results that show macroprudential policy reducing the probability of general credit booms and of those booms leading to serious financial instability. Claessens et al. (2013) consider the effects of different policies on the balance sheets of individual banks and find that while countercyclical capital buffers can help slow leverage growth in the banking sector, they may be of little use in times of financial downturns. %Bruno et al. (2017) find that in emerging markets in the Asia-Pacific region, banking sector and bond market capital flow management are effective in slowing down banking and bond inflows. Previously Forbes and Warnock (2012) found that capital controls do not effectively limit the size of capital flows, so the evidence should be still considered mixed.
+
+The history of financial crises makes it evident that financial instability has little respect for national borders (see e.g. Reinhart and Rogoff, 2009). The global financial crisis and the subsequent sovereign debt crisis experienced by the European Union showed that as the global financial markets have become ever more closely intertwined and economies ever more open, financial calamity can spread with a speed difficult to match by policy makers. This is one of the reason why academic research on the effects of macroprudential policy with at least some policy relevance mostly considers open economy settings. Many empirical papers focus on macroprudential policies in emerging economies, and consider cases when the economies are subject to large foreign capital flows. Also papers focusing on advanced economies put emphasis on the open economy specifics of the problem (see e.g. Buch and Goldberg, 2016).
+
+There is growing evidence that the effects of macroprudential instruments occasionally spill over borders through international bank lending (see e.g. a meta study of Buch and Goldberg and the research cited therein, 2016, Agénor et al., 2017) and that this may reduce the effectiveness of national macroprudential policies (e.g. Reinhardt and Sowerbutts, 2015). Using a dataset on prudential measures described in Cerrutti et al. (2017b)\footnote{<Note that this is a different dataset than the one described in Cerrutti et al. (2017a).}, Avdjiev et al. (2017) find evidence that the implementation of macroprudential measures has a significant impact on international bank lending that also results in cross-border spillovers. They find that most of the spillovers from tightening of macroprudential regulation lead to expansions in cross-border bank activity.
+% < a note here on my results?
+
+It seems intuitive, that in the presence of large and fast-moving capital flows and extensive cross-border activities of large international banks, the effects of macroprudential policies are not confined to the country that implements them. Cross-border spillovers of macroprudential policy may arise e.g. when banks exploit differences in the standards of national regulation by placing their activities in countries with the least imposing regulatory requirements. This regulatory arbitrage can to some extent be mitigated by mutual recognition, often referred to as reciprocity, of macroprudential measures by the national authorities of different countries. Even though the leakages have so far been found to be rather small, they may increase as national macroprudential policies become more widespread (Buch and Goldberg, 2016). 
+
+The effectiveness of macroprudential instruments can be compromised if banks can take their lending activities outside the scope of the regulations or if domestic agents can borrow abroad. As Engel (2015) points out, if the domestic supervisor has different regulatory oversight on domestic banks and foreign branches or subsidiaries, macroprudential policy leakages and spillovers arise quite naturally. This has two consequences. First, the domestic economy remains exposed to systemic risk even after regulatory tightening. Second, the domestic financial intermediaries are left at a disadvantage as a funding cost advantage is created for foreign banks outside the scope of national regulation. This the motivation for reciprocity, i.e. mutual recognition of macroprudential measures by different countries.
+
+However, reciprocity can also lead to the foreign financial institutions simply shifting their activities to other countries. In a sense, this can be a desirable outcome, insofar as it may reduce the fragility of the financial system and thus the risks to the domestic economy, but it can also have undesirable outcomes. First, this may lessen the options for domestic households and companies and it may also diminish the availability of expertise that may not be available locally and thus make also the domestic financial sector less competitive (Engel 2009). Most importantly, if regulation makes the foreign financial institutions to relocate, the possibly adverse effects of the resulting thinner financial markets may last a lot longer than the financial cycle. This why some economists, e.g. Korinek (2011) and Jeanne (2012), favor countercyclical capital controls instead of more stringent regulation. The problem of regulatory arbitrage would naturally disappear if regulation was completely harmonized across all countries. However, optimal macroprudential policy is highly unlikely to be identical across different economies, i.e. there is a trade-off between national customization and global harmonization of policy measures. 
+
+From this brief discussion, it should be clear that the need for understanding how the macroprudential policies affect cross-border banking is crucial for the design of working macroprudential policies. My contribution to this discussion is to provide a further approach, the gravity framework, for studying the spillover effects on bilateral cross-border banking. My findings lend support for there being cross-border spillovers from macroprudential policies and that the effects on bilateral cross-border lending may occasionally be fairly large. The bilateral nature of the gravity framework however allows for a more detailed look at the sign and size of the marginal effect from implementing macroprudential policies. Thus my results are not entirely in line with previous findings. 
+
+\subsection{International banking and the gravity model}
+
+The gravity model has been a workhorse of international trade literature for decades\footnote{See e.g. Anderson (1979) for an early formulation and Head and Mayer (2014) and Anderson (2010) for surveys.}. As the name suggests, the model, originally borrowed from physics, explains a flow between two entities by simply relating it to their two masses and friction terms. The model has been very successful in explaining the patterns in international goods trade but also fits data on international investments and capital flows surprisingly well. The classic gravity result states that as the distance between two entities increases, the bilateral trade between them decreases. 
+
+The structural gravity framework derived by Anderson and van Wincoop (2003) relates exports from country $i$ to $j$, $X_{ij}$ to the nominal incomes of residents in both countries, $Y_i$ and $Y_j$, the relative price indices, $P_i$ and $P_j$, and trade costs, $t_{ij}$ in a multiplicative equation:
+\begin{equation}
+X_{ij} = \alpha Y_i Y_j \bigg( \frac{P_i P_j}{t_{ij}} \bigg)^{\sigma -1}.
+\end{equation}
+
+The simplest empirical version of the model as a log-linearized equation requires only the economic masses of the domestic country and the foreign country, such as GDPs, and the distance of the two countries as an approximation for transaction costs:
+\begin{equation}
+trade_{ij}=\beta_1GDP_i+\beta_2GDP_j+\beta_3dist_{ij},
+\end{equation}
+where $trade_{ij}$ denotes the trade flow to country $i$ from country $j$, $GDP_i$ and $GDP_j$ are the gross domestic products of countries $i$ and $j$ respectively and $dist_{ij}$ denotes the distance of the two countries. (Portes and Rey, 2005) In more elaborate versions the number of variables increases, but in general, in a gravity specification bilateral trade is a product of measures of economic size, a bilateral barrier (such as distance and other trade frictions) and multilateral resistance term (Anderson and van Wincoop, 2004). Portes and Rey (1998) were one of the first to propose that a gravity equation could also explain bilateral financial asset flows, finding that the model fit the data on bilateral cross-border investments surprisingly well.
+
+The gravity model of international asset trade is currently one of the most widely used theoretical frameworks for studying the determinants of cross-border financial asset flows and holdings and understanding home bias\footnote{For other frameworks of studying home bias see e.g. Brennan and Cao, 1997, who study the differences in informational endowments of investors, and Couerdacier et al., 2010, who develop a RBC-model explaining home bias by capital accumulation and international asset trade.}. The theoretical framework for a gravity model of cross-border asset flows derived by Martin and Rey (2004) and empirically estimated by Portes and Rey (2005) is the most influential and widely used approach to gravity in international finance. This micro-founded two-country model with an endogenous number of financial assets relates the size of the two economies and trade costs to their bilateral asset transactions. The model also succeeds in providing an intuitively appealing explanation for home bias by assuming that transaction costs enter the model non-linearly, enabling even small transaction costs to produce a high degree of home bias. The empirical model of Portes and Rey (2005) has been the basis of much of the study of determinants of cross-border portfolio investments. The gravity equation most often estimated in this context takes a form closely resembling something like this:
+\begin{align}
+log(asset_{od,t})= & \alpha_1 log(M_{o,t})+\alpha_2 log(M_{d,t}) +\alpha_3 log(dist_{od}) \nonumber\\
+& + \alpha_4 log(\text{information variables}) \nonumber\\
+& + \alpha_5 log(\text{transaction technology variables})\nonumber\\
+& + \text{multilateral resistance} + \text{time dummies} \nonumber\\
+& + \text{constant}+ u_{od,t},  \\
+& o, d=1, ..., N \text{ and } t=1, ..., T, \nonumber
+\label{usual gravity}
+\end{align}
+where $asset_{od,t}$ is the bilateral asset position, $M_{o,t}$ and $M_{d,t}$ capture the economic masses of the two countries and $dist_{od}$ refers to the distance between the capitals of the two countries. Theory predicts that the coefficients of the logs of economic masses are equal to one, and that distance has a negative effect on asset holdings. Thus it is expected that $\alpha_1=1$, $\alpha_2=1$ and $\alpha_3<0$. It is common to include different variables to capture some features of information frictions or transaction frictions between the two countries, such as whether they share a common border, a language or a currency. Time dummies capture the effect of macroeconomic disturbances and regional dummies the effect of the multilateral resistance term (see e.g. Coeurdacier and Martin, 2009).
+
+The gravity model was taken up quickly in the study of financial asset trade and as IMF began publishing data on bilateral portfolio investment asset holdings \footnote{The Coordinated Portfolio Investment Survey, or CPIS-database is available at the IMF website.}, papers making use the approach proliferated. Most of the papers in this strand if literature confirm the classic gravity result, i.e. that as distance increases, bilateral trade in financial assets decreases. The "distance puzzle" is then just another name for the classic home bias puzzle.
+%\footnote{<Add list of refs on "most of the papers..."}
+
+The gravity model has since been applied to studying the determinants of foreign direct investments, M\&A's and also international banking. Already in 2005 Buch published a paper considering the gravity approach to international banking, and the most recent example of an application to cross-border banking is a recent paper by Brei and von Peter. These papers broadly confirm the classic gravity result to apply also to international banking, i.e. that bilateral bank asset holdings decrease as the distance between the origin and destination countries increase. 
+
+Houston et al. (2012) consider the effect of regulation on international bank flows in a gravity framework. They find strong evidence of banks transferring funds to markets with fewer regulations. My results are in line with their results, but the differences between their and my approach are large. E.g. the data used for dependent variable and the independent variables measuring regulation are completely different. Moreover, the regulation considered is more of a microprudential nature. This is of course only natural, given that the paper was written prior to the formalization of the macroprudential framework. In addition to the different data, I use an estimation method that is less simplistic and more on par with the more sophisticated methods used in research on the international trade with a gravity framework. Still, their results show that considering the effects of regulation in the gravity framework is worth while and can give valuable insights about the sometimes unintended consequences of policy making and regulation. This is the gap in knowledge my paper aims to help in filling. 
+
+% <
+The gravity equations have been estimated using many different approaches. One of the most essential features of bilateral trade data, regardless of what commodity or asset is being traded, is that the data contains a non-negligible and often large share of zero observations. The common practice of log-linearizing the gravity equation and estimating it's determinants using fixed effects OLS thus has two obvious drawbacks. First, the log-linearizing of the equation will result in the omission of all zero observations as the log of zero is not defined. Second, even after considering only the positive observations, we still have a sample with an implicit selection process and a limited dependent variable. This calls for the use of estimation methods appropriate for limited dependent variables, whereas the use of OLS will lead to biased estimates. Already in 2006 Santos Silva and Tenreyro showed this to be the case and that the common approach to estimating a gravity equation in a log-linearized form with OLS leads to biased results. They propose a Poisson pseudo-maximum-likelihood estimation method that ensures an appropriate treatment of heteroskedasticity and zero observations. This is the approach I have taken in this paper. 
+
+\newpage
+\section{Data}
+
+This section describes the data used in my analysis. For the purpose of the gravity model, all data is considered in a bilateral framework with multiple countries of origin and destination countries. Here a \textit{country of origin }refers to the country where the bank operates as a bank with a domestic headquarter or a subsidiary of a bank with a foreign headquarter. The \textit{destination country} is the country to which the banks from the country of origin extend credit. 
+
+\subsection{Data on the use of macroprudential tools}
+
+A major limitation to studying the effectiveness of macroprudential policies has been the lack of data. Among others, the International Monetary Fund has been active in trying to fill in this gap. Cerrutti et al. (2017a) make use of an IMF conducted Global Macroprudential Survey and previous studies to build a database that is the most ambitious take on the task to date.\footnote{The Global Macroprudential Policy Instruments -, or GMP-data, has also been used in Cerrutti et al. (2017b). This data is for a smaller set countries, but it is quarterly and takes into account the intensity of the tool. \textit{Should this data be used as robustness check for the subsample?}} The IMF has also initiated an annual survey on the use of macroprudential tools, results of which have been published twice.  In this paper, I use the data compiled by Cerrutti et al. (2017a).
+
+This data is an annual index for 119 countries covering the period 2000-2013. To match the sample with the coverage of my other data sources, I drop two countries from the sample and make do with 117 countries. The IMF survey covers all in all 18 macroprudential tools, but for this dataset 12 instruments are included. The instruments are divided into two categories following the classifications used by e.g. the IMF and European Systemic Risk Board, and then two aggregate indices are formed. First index comprises ten instruments that target financial institutions, referred to as $mpif$, the second two that are aimed at borrowers' leverage, referred to as $mpib$. 
+%\textit{<Add a table with definition of the indices and the tools} 
+
+The indices are build in such a way that implementing any of the ten tools that target financial institutions or the two tools that target the borrowers results in an increase of the index by one integer. Thus if a country at a given year implements one more tool targeting financial institutions in addition to the one it already has, the value of the $mpif$ index becomes 2. The maximum value for $mpif$ is 10 and for $mpib$ 2. 
+
+\begin{table}[!h]
+\centering
+\begin{tabular}{ l l l l l l l }
+\hline
+Variable&Mean&Std. dev.&Min&Max&Range&Obs. \\
+\hline
+$mpif$&1.38&1.24&0&6&0-10&1 638 \\
+$mpib$&0.36&0.66&0&2&0-2&1 638 \\
+\hline
+\end{tabular}
+\caption{Macroprudential indices targeting financial institutions and borrowers}
+\label{tab:mpi}
+\end{table}
+
+\begin{table}[!h]
+\centering
+\begin{tabular}{ l l l l l l l l l l }
+\hline
+Value&0&1&2&3&4&5&6&7-10\\
+\hline
+$mpif$&28.9\%&29.9\%&23.8\%&11.7\%&3.7\%&1.7\%&0.4\%&0\% \\
+$mpib$&74.6\%&15.3\%&10.2\%&-&-&-&-&- \\
+\hline
+\end{tabular}
+\caption{Use of macroprudential tools: \% of all observations with n tools implemented}
+\label{tab:mpiu_use}
+\end{table}
+
+The most important thing to note and to keep in mind about the indices is that they simply document the number of macroprudential tools implemented by the countries during a given year. The intensity of the measures is ignored as well as changes in the stance of the different policies. That is, the index changes by the same amount for countries that implement a 0.1 \% countercyclical capital buffer and a country that implements a 5 \% one. Also, the indices do not distinguish between a binding regulation and a recommendation. This allows for the broadest possible coverage of countries and instruments, but arguably gives a very simplified view of the policy field.  
+
+In other aspects also, the data is not without caveats. First of all the data is based on survey data, and thus all the usual challenges of survey data should be kept in mind. Second, the years covered coincide with a period during which the macroprudential framework was non-existent or just beginning to take shape. These facts considered together with the myriad of ways the details of the macroprudential tools vary across countries means that consistency is most probably compromised. Still, the data provides a valuable stepping stone for research on the effects of macroprudential policies. 
+
+\subsection{The dependent variable - bilateral bank asset holdings}
+
+The goal of this paper is to find out how the effects of macroprudential policies spill across borders to other countries. As the purpose of most macroprudential policies is to address excess growth of debt and leverage, it is natural to assume that the spillovers should affect lending also. Thus the dependent variable for the purpose of this paper is the bilateral cross-border bank asset holdings. The data comes from the BIS Locational Banking Statistics database, which provides the most extensive source of bilateral cross-border positions. This data is drawn from the balance sheets of banks that operate internationally and it allows for a geographical breakdown of their counterparties, which can belong to any sector. This data is then aggregated to a country-to-country framework. In the full LBS dataset there are 44 reporting countries and 216 counterpart countries with quarterly observations from 1977 onwards. For the purpose of this paper I use annual data and choose 33 of the reporting countries and 84 counterpart countries to match the countries for which I have data on the use of macroprudential tools. 
+
+To extend the coverage of the data on bilateral asset holdings, I overlay the data on assets held by origin countries in the destination countries onto data on liabilities of origin countries held by destination countries. This procedure, following Brei and von Peter (2018)\footnote{A detailed description of the procedure can be found in appendix A of Brei and von Peter (2018).}, leads to a network of bilateral holdings for pairs of countries where both are BIS reporting countries or where either the origin country or the destination country is a BIS reporting country. Thus the observations that equal zero can be considered "true" zeros, as only observations for pairs where both countries are not BIS reporting countries are missing. This is noteworthy, as it affects the choice of estimation strategy.
+%\footnote{Side note: the publicly available locational banking statistics is not very useful because so much of these bilateral observations are confidential. I however have all the data, as I had access to it when I was at the Bank of Finland, so confidentiality is not an issue here.}
+
+The dependent variable is thus bank asset holdings of banks in origin country that are the liabilities of borrowers in the destination country, denoted by $ba_{od}$, where $o$ is the identifier of the origin country and $d$ of the destination country. In Table~\ref{tab:ba_od} I report summary statistics for the whole sample and for the positive observations. There are 117 countries in the sample, of which 33 are BIS reporting countries and 84 are counterpart countries in the LBS data. After dropping some observations for which the data on controls is incomplete, 6112 country pairs enter the sample. The data are in thousands of dollars, i.e. the mean of the positive observations is 11.3 billion dollars. \footnote{Note that the position of banks in origin country vis-a-vis the destination country can be negative due to short selling. In the full sample there are eight negative observations of $ba_{od}$, but I have excluded them.} 
+%This is noteworthy for the interpretation of the average marginal effects of independent variables on the dependent variable later on, because the mean is not very large. This means that even fairly large average marginal effects in percents will not result in very large average marginal changes in the dependent variable in absolute terms. 
+
+An important feature of the data is the share of zero observations. This share is very large; almost 45 \% of all observed bilateral cross-border bank asset holdings is equal to zero. This is a common feature in all bilateral data, be it data on international goods trade flows, cross-border portfolio asset holdings, foreign direct investments or banking data. That is, at any given time, a country trades with or invests in or extends credit to only a handful of other countries. The non-negligible share of zero observations calls for the use of estimation methods that are suitable for limited dependent variables. Failing to do so will inevitably result in biased estimates. A common, simplified approach is to drop the zero observations and simply estimate the effects in the positive part of the sample, but this risks biased results also. Surely there is a reason for such high share of zero observations, be it barriers to trade, prohibitively large trading costs or something else, and ignoring this will result in an over-simplified picture of what drives bilateral trade or investment flows.
+
+\begin{table}
+\centering
+\begin{tabular}{l|r r }
+\hline
+ & $ba_{od}$ & $ba_{od} > 0$  \\ 
+\hline
+N of pairs & 6 112 & 4 674  \\
+N of periods & 14 & 14  \\
+N of observations & 85 560 & 51 013 \\
+\hline
+Mean & 6 278 & 11 281  \\
+Standard deviation & 56 286 & 75 082 \\
+Min & 0 & 0.01 \\
+Max & 2 962 748 & 2 962 748 \\
+\hline
+Share of 0s & 44.35 \% & - \\
+\hline 
+\multicolumn{3}{l}{\footnotesize Mean, standard deviations, min and max in millions of US dollars.}
+\end{tabular}
+\caption{Summary statistics of the dependent variable.}
+\label{tab:ba_od}
+\end{table}
+
+
+\subsection{The other controls}
+
+For the gravity model two types of independent variables are required. One should have some variables that account for the economic masses of the two countries, such as the GDP, GDP per capita or market capitalization. In addition to these there should be different variables that account for the frictions of trade (in goods or in financial assets) between the two countries. Usually distance is included as a proxy for broadly defined transaction costs and home bias, but the other frictions can be a myriad of things. Note also that some of these variables can be also factors that facilitate trade between the two countries by, say, increasing the flow of information between them. 
+
+For the purpose of this paper, I use annual GDP for a measure of the economic masses of both the origin country and the destination country.\footnote{<One possible modification/robustness check: use the size of the banking sector for the country of origin, as supply of finance can be thought to depend on the size of the financial sector, and GDP for the destination country, as the demand for finance should depend on the size of the economy.} The GDP data is annual data from the World Bank and in logged millions of dollars. 
+
+Distance is measured as logged population-weighted distance between the largest cities of the two countries. The data for distance comes from the gravity database of CEPII, as does data for four of the most common gravity dummies: contiguity, common language, common colonial history and common currency. Distance is expected to increase the frictions of trade, but the other controls are all expected to reflect less frictions in bilateral trade. There is an almost countless number of other possible controls used in the literature, such as time zone difference or internet traffic. However, these four are the most commonly used and the ones most often found to have a statistically significant effect on bilateral asset holdings (see e.g. Brei and von Peter, 2018).
+
+In addition to the usual gravity controls, I control for financial sophistication by using an indicator for income group and dummies for financial openness, membership of the WTO and of the EU. The indicator for income group is obtained from the IMF World Economic Outlook. There are 23 advanced, 63 emerging and 31 developing countries in my sample, but in the observations the share of advanced economies is much higher than a quarter. This is because advanced economies are also BIS reporting countries, thus observations where at least one of the pair is an advanced economy is highly unlikely to be missing. On the other hand none of the BIS reporting countries is a developing country. Thus observations where one of the countries is a developing country are much more likely to be missing. The dummy for financial openness is from Cerrutti et al. (2017, updating Lane and Milesi-Ferretti, 2007), and it takes value 1, if a country is considered financially open by this measure\footnote{A country is classified as financially open if its median openness score over 2000-2011 is greater than the median score for all countries in the sample. Otherwise it is categorized as financially closed.}. 48 of the countries in my sample are considered financially open using this measure. The dummies for membership in the WTO and the EU are both from the CEPII's gravity database. 
+
+In the gravity literature, the need to control for a so called multilateral resistance term has been emphasized since an influential paper by Anderson and van Wincoop (2004). This is meant to capture the fact that the assets of any given country must "compete" with the assets of all the other countries. This term is often proxied by regional dummies, but an even more robust way is to include fixed effects for all origin countries and all destination countries. This is the approach I have taken. 
+
+% < Check the interpretation when the dependent variable is linear! <<In the equation to be estimated the continuous variables, i.e. the dependent variable, the economic masses and distance will be in logs, because here the nature of the relationship between the dependent and the independent variables is such that a percent change in an independent variable causes a percent change in the dependent variable. With the other controls the relationship is such that a unit change causes a percent change in the dependent variable. Thus the other controls are in integers or dichotomous. This means that the equation to be estimated will be a combination of a lin-log and a lin-lin equation.
+
+The summary statistics for the continuous independent variables are documented in Table~\ref{tab:cont} and for the dichotomous controls in Table~\ref{tab:dich}. The variable denoting the income group of the countries takes value 0 for developing countries, 1 for emerging economies and 2 for advanced economies. The dummy indicating whether an economy is considered financially open or closed takes value 1 for financially open economy and value 0 for financially closed economy.
+
+%TO OD:
+%change the values assigned to incomegroup from 1-3 to 0-2
+%change the tables so that there is a different table for variables that relate to country pairs and a different to vars that relate to countries. Make sure that the values make sense (now they don't): for pairs I should have the percentage of pairs for which this is true and for others the percentage of countries for which this is true. Think about how the data is actually recorded; room for improvement? Think about transferring everything to R.
+%rescale the independent variables and the dependent variable so that the observations are closer to the range of 0 to 1
+
+%Add sum stats for the original data also?
+\begin{table}[!h]
+\centering
+\begin{tabular}{ l l l l l l }
+\hline
+Variable&Mean&Std. dev.&Min&Max&Obs.\\
+%\hline
+%$gdp_o$&900 040&1.28&20.78&25.98&85 560 \\
+%$gdp_d$&23.19&2.68&12.07&30.17&85 560 \\
+%$distw_{od}$&8.58&0.81&4.39&9.76&85 560 \\
+\hline
+%$gdp_o$&900 027&2 140 518&321&1.62e+07&85 560 \\
+%$gdp_d$&&&&&85 560 \\
+%$distw_{od}$&&&&&85 560 \\
+%\hline 
+$log(gdp_o)$&11.93&2.24&5.78&16.60&85 560 \\
+$log(gdp_d)$&11.93&2.24&5.78&16.60&85 560 \\
+$log(distw_{od})$&8.70&0.81&5.08&9.89&85 560 \\
+\hline
+\multicolumn{6}{l}{\footnotesize Mean, standard deviations, min and max of GDP in millions of US dollars.} \\
+\multicolumn{6}{l}{\footnotesize Mean, standard deviations, min and max of distance in kilometers.}
+\end{tabular}
+\caption{Continuous independent variables}
+\label{tab:cont}
+\end{table}
+
+\begin{table}[!h]
+\centering
+\begin{tabular}{ l l l l l}
+\hline
+Value of variable&0&1&2&Obs.\\
+\hline
+$incomegr$ & 11.52 \% & 43.81 \% & 44.67 \% &85 560 \\
+$finopen$ & 44.37 \% & 55.63 \% & - & 85 560 \\
+$contig$ & 98.23 \% & 1.77 \% & - & 85 560 \\
+$comlangof$ & 88.15 \% & 11.85 \% & - & 85 560 \\
+$col45$ & 98.49 \% & 1.51 \% & - & 85 560 \\
+$comcur$ & 96.63 \% & 3.37 \% & - & 85 560 \\
+$wto$ & 8.62 \% & 91.38 \% & - & 85 560 \\
+$eu$ & 70.63 \% & 29.37 \% & - & 85 560 \\
+\hline
+\end{tabular}
+\caption{Dichotomous controls: \%-share of observations}
+\label{tab:dich}
+\end{table}
+
+\cleardoublepage
+\newpage
+\section{The model}
+
+\subsection{Research questions}
+
+The goal of this paper is to find out whether the gravity approach could be useful in the study of cross-border spillovers of macroprudential policies and how these spillovers are transmitted through international lending. To this end I formulate two research questions. 
+
+\begin{itemize}
+\item Can the gravity model tell us something about the cross-border spillovers of macroprudential regulation through international lending?
+\item Does the implementation of macroprudential instruments in the origin country or the destination country have an effect on the bilateral cross-border bank asset holdings?
+\end{itemize}
+
+The first of the questions is more general in nature: I am interested in simply finding out whether after controlling for the usual gravity variables, the inclusion of variables measuring the use of macroprudential instruments plays any role in the gravity framework. The second question is more specific and focuses on the effect of macroprudential regulation on bilateral cross-border bank asset holdings. 
+
+\subsection{The gravity equation}
+
+To answer these questions, I specify a gravity equation with four independent variables controlling for the use of two classes of macroprudential tools in the origin country and the destination country as Equation (4). The dependent variable is the bilateral bank asset holdings, held by banks in origin country with destination country as the counterpart. The economic masses of the origin and destination countries are represented by annual GDP in logs. The population-weighted distance between the two countries is also in logs. 
+
+The variables measuring the use of macroprudential regulation in the origin and the destination country enter Equation (4) after the variables for economic mass and distance. The value of the index for macroprudential tools targeted at financial institutions in the destination and origin country are given by $mpif_{d,t}$ and $mpif_{o,t}$ respectively. The value of the index for macroprudential tools targeted at borrowers in the destination and origin country are given by $mpib_{d,t}$ and $mpib_{o,t}$ respectively. 
+
+I include the four most common gravity controls (dummies for contiguity, common official language, common colonial history and common currency) and four variables that are often assumed to account for financial sophistication (income group, financial openness, membership of the WTO and the EU). I proxy multilateral resistance by including a full set of country fixed effects, and include time dummies to account for macroeconomic conditions. There are 117 countries that can both be origin or destination countries. After discarding missing values, i.e. the observations where neither of the countries is a BIS reporting country, the sample consists of 6112 country pairs. Time runs from 1 to 14, i.e. from 2000 to 2013. Note that the potentially overlapping clustering in the observations is accounted for by the chosen estimation method, thus there is no need to control for it explicitly.
+
+Thus the gravity equation of cross-border bank asset holdings for the purpose of this paper is given by Equation (4):
+\begin{align}
+ba_{od,t} = & \alpha_t * log(GDP_o,t)^{\beta_1} * log(GDP_o,t)^{\beta_2} * log(distw_{od})^{\theta} \nonumber \\
+& * mpif_{d,t}^{\gamma_1} * mpif_{o,t}^{\gamma_2} * mpib_{d,t}^{\gamma_3} * mpib_{o,t}^{\gamma_4} \nonumber \\
+& * O_{o,t} * D_{d,t} * e^{\lambda'z_{od,t}}, \\
+& o, d=1, ..., 117 \text{ and } t=1, ..., 14, \nonumber
+\label{eq:gravity}
+\end{align}
+where the origin and destination country fixed effects are included in $O_{ot}$ and $D_{dt}$ respectively, and the gravity and financial sophistication controls are included in the term $z_{od,t}$. The coefficients $\gamma_1$, $\gamma_2$, $\gamma_3$ and $\gamma_4$ measure the effect of implemented macroprudential policies. The composite coefficient $\theta$ measures the distance effect.
+
+\subsection{Hypotheses on the effect of macroprudential tools on bilateral bank asset holdings}
+
+In this section I formulate the ex-ante hypotheses of how one should expect the use of macroprudential regulation to affect the bilateral bank asset holdings. 
+
+One might think that banks should simply be expected to move into markets with less regulation and out of markets with more regulation, and thus the effect macroprudential regulation to always induce banks to reduce cross-border holdings in the country implementing regulations. This is however a too simplistic look at macroprudential regulation. As mentioned before, the lack of a one definitive macroprudential tool means that there are in fact a multitude of different tools with different targets. The motivation behind using two indices of macroprudential tools is just this: even though macroprudential tools that are aimed at different actors on the financial markets may all work towards a common goal of moderating credit growth, they work through different transmission channels and thus their potential spillovers are also different. 
+
+I formulate my hypotheses in the spirit of Reinhardt and Sowerbutts (2015) and separate between the effects of regulation that is aimed at financial institutions and that is aimed at borrowers. A crucial assumption behind the distinction is that the scope of these type of regulations often differs. Regulation that targets financial institutions is assumed to apply only to domestic banks, i.e. banks with a domestic headquarter and subsidiaries of foreign banks. These are the banks that are usually under domestic financial supervision. Foreign banks that operate via branches usually are not. On the other hand, regulation that targets borrowers is usually applied to all domestic borrowers, thus affecting also foreign banks via their domestic customers.\footnote{Note: There are several arguments for why this assumption may be too simplistic.} The hypotheses are formulated as follows:
+
+\begin{hyp} \label{hyp:1}
+Implementing macroprudential regulation aimed at domestic financial institutions leads to domestic agents borrowing more abroad.
+\end{hyp}
+
+\begin{hyp} \label{hyp:2}
+Implementing macroprudential regulation aimed at domestic borrowers does not lead to more borrowing from abroad, but instead domestic banks might move lending to less regulated markets.
+\end{hyp}
+
+The Hypothesis~\ref{hyp:1} states that regulation, that is aimed at financial institutions, such as tightening capital requirements, is expected to lead to domestic agents borrowing more from abroad. This happens because as capital requirements increase, the weighted average cost of capital for banks subject to this measure increases. As noted above, macroprudential regulation applies to banks that are under domestic supervision. Thus a funding advantage for foreign banks is created and borrowing from abroad should thus increase. 
+
+The Hypothesis~\ref{hyp:2} states that macroprudential regulation, that targets domestic borrowers, such as caps on loan-to-value- and debt-to-income-ratios, should not have the similar effect as regulation aimed at financial institutions. This is because now there is no funding advantage for foreign banks: these macroprudential tools apply to also foreign banks via the domestic customers. Thus increased lending abroad should not be the result. Instead, the regulation might affect cross-border banking if it will lead to banks moving lending to less heavily regulated markets. 
+
+\newpage
+\section{Estimations}
+
+In this section I go through the possible and chosen estimation methods and present the preliminary results. 
+
+\subsection{Estimation methods}
+
+There are a number of different estimation methods that are used to estimate the gravity equation. The most simple one has also been the most commonly used: a panel fixed effects OLS with zero observations excluded. This approach, which following Portes and Rey (2005) is taken by most of the studies considering the gravity model of financial asset trade fails to address the prevalence of zero observations. As with most bilateral data however, the share of zero-observations is non-negligible and thus these observations need to be taken into account to form a coherent picture of the question at hand. Simply ignoring the zero observations will lead to biased estimates of the effects of the independent variables. 
+
+A different approach, able to account for zero observations properly, was proposed by Drakos et al. in a paper published in 2014. Their idea is to take the dependent variable, portfolio investments in their case, as dichotomous, i.e. taking value 1 if the investment holding is positive and zero otherwise. This allows them to use a panel probit estimation and also to consider a dynamic version of the model. This approach is also useful, if the share of confidential observations in the data is large, as it is in publicly available data on cross-border portfolio investment holdings and also cross-border bank asset holdings. Their approach however is unable to say anything about the determinants of the level of investment holdings, so this too is a too simplistic take on the issue.
+
+One approach that would be able to account for the share of zero observations would a two-stage model, such as the sample selection model or the double-hurdle model. Such a two-stage model is closely related to tobit models and other models for limited dependent variables and was first suggested by Cragg (1971) for cases where the value of dependent variable is zero with non-negligible probability. In addition to this the models have a specific feature: By assuming two different stages or "hurdles", a dichotomous participation decision followed by a level decision, they allows these two hurdles to be governed by different processes. Two-stage models have been most successfully employed in set-ups that study e.g. female labor supply or consumption of cigarettes (see e.g. Blundell and Meghir, 1987, and Jones, 1989, for classic papers), both phenomenon characterized by a non-negligible share of zero observations. The context of cross-border banking could be a natural application for a two-stage model for two reasons. First, because the observations cluster on zero, i.e. the dependent variable is clearly limited. Second, and more specifically, because the decision to extend cross-border credit is intuitively easy to deconstruct into the two hurdles, participation and level decisions. A banker considering extending credit to a given country must first make the dichotomous decision of doing so or not. Then given that the decision to invest is positive, the banker decides the level of credit extended. There is no reason why these decisions should be determined by identical processes. These models are however estimated using quite restrictive distribution assumptions that may well lead to biased results. The two-stage models are also computationally very heavy and require extra effort to interpret their results. Importantly, they are also not as apt to dealing with heteroskedasticity as the final approach considered. 
+
+Since the first papers estimating gravity equations for financial asset trade, methodological advances have been taken within the international trade literature concerning the estimation technique of the gravity equation. Santos-Silva and Tenreyro (2006) propose an estimation method that is starting to take hold more widely (see e.g. Brei and von Peter, 2018). This method, called by the authors the Poisson pseudo-maximum-likelihood (PPML) procedure allows for estimating the gravity equations in their multiplicative form, i.e. without log-linearizing the equation. In their paper they show that the usual approach of log-linearizing the model and then estimating it with OLS results will lead to misleading and highly biased results if there is heteroskedasticity present in the data. This is an important implication of Jensen's inequality stating that the expected value of a the logarithm of a random variable is different from the logarithm of its expected value: interpreting the parameters of a log-linearized equation estimated by OLS as elasticities will lead to biased results in case of heteroskedasticity. In addition, the fact that zero observations are excluded through log-linearizing will also lead to biased results. The bias will usually lead to overstatement of the effect of the controls, e.g. the distance effect will reported to be larger than it actually is. The PPML has many advantages over the other estimation strategies. First, it allows for estimating the gravity equation in the multiplicative form without log-linearization, thus resolving the problem of disappearing zero observations. Second, interpreting the results is straightforward and does not require calculating separate marginal effects. Third, it is consistent in the presence of heteroskedasticity and clustering that are central features in the bilateral data considered in this paper. 
+
+\subsection{The results}
+
+The full model to be estimated is given by Equation (4) formulated in section 4.2. In the first specification I include only the economic masses, distance and the macroprudential variables. To the second specification I add the gravity and financial sophistication controls. Country fixed effects for origin and destination countries, time dummies and a constant are included in both specifications. The results of the PPML estimation for the two main specifications are given in Table \ref{tab:results}. The results are surprisingly consistent over robustness checks done with different specifications and with different subsets of the sample.
+
+\begin{table}[!h]
+\centering
+\begin{tabular}{ l l l l l l}
+\hline
+Specification&(1)&&&(2)& \\
+Depvar: $ba_{od}$&&&&&\\
+\hline
+$log(GDP_{o})$&0.160&(0.204)&&-0.338&(0.246)\\
+$log(GDP_{d})$&1.705****&(0.226)&&1.122***&(0.364)\\
+$log(distw_{od})$&-0.758****&(0.059)&&-0.669****&(0.051)\\
+$mpif_{d}$&-0.061**&(0.026)&&-0.071***&(0.026)\\
+$mpif_{o}$&-0.102****&(0.028)&&-0.108****&(0.027)\\
+$mpib_{d}$&0.024&(0.033)&&0.030&(0.033)\\
+$mpib_{o}$&0.097**&(0.045)&&0.105**&(0.044)\\
+Controls:&&&&&\\
+gravity &No&&&Yes& \\ 
+financial sophistication &No&&&Yes& \\
+\hline
+$R^2$&0.86&&&0.91&\\
+\hline
+\multicolumn{6}{l}{Standard errors adjusted for 3 509 clusters. Reported in parantheses. }\\
+\hline
+\multicolumn{6}{l}{\footnotesize Significance at the 10\%, 5\%, 1\% and 0.1\% levels is denoted by *, **, *** and ****.}\\
+\end{tabular}
+\caption{Results of the PPML estimation}
+\label{tab:results}
+\end{table}
+
+Theory and previous literature predict that the marginal effects of the economic masses should be positive and that of distance should be negative. This is indeed the case for all specifications. The distance effect is highly statistically significant, negative and also broadly in line with the magnitude of effects found in previous papers, notably Brei and von Peter (2018). The GDP of the destination country has a clearly statistically significant effects on the level of bilateral bank asset holdings, but interestingly the effect of the GDP of the origin country is insignificant across both main and all alternative specifications. This points out to the need for reconsidering the use of GDP as a measure of economic mass. The size of the banking sector might serve as a more suitable measure. One might argue that the size of the banking sector is more suitable especially for the origin country, because supply of credit can de thought to depend on the size of the banking sector, whereas the demand for credit is more closely related to the size of the economy. 
+
+According to my hypotheses the effects of implementing macroprudential regulation aimed at financial institutions in the destination country ($mpif_{d,t}$) and at borrowers in the origin country ($mpib_{o,t}$) should be positive. On the other hand, the effects of implementing macroprudential regulation aimed at financial institutions in the origin country ($mpif_{o,t}$) and at borrowers in the destination country ($mpib_{d,t}$) should be negative. These hypotheses are not consistently confirmed by the results: the sign of the effect of $mpif_{o,t}$ and $mpib_{o,t}$ are as expected. Instead the effect from implementing macroprudential regulation aimed at financial institutions consistently has a negative effect on bilateral bank asset holdings while implementing regulation aimed at borrowers has a positive effect (though not always statistically significant) regardless of whether the implementing country is the origin country or the destination country. This result might reflect the fact that the macroprudential tools aimed at borrowers target specifically borrowing in the housing market. It may well be that this market segment is not the most important one to the big, internationally active banks responsible for cross-border flows of banking assets. The effects from macroprudential tools aimed at borrowers are also not statistically significant in the case of policies implemented in the destination country and only modestly significant when the policies are implemented in the origin country.
+
+My results show a negative effect of macroprudential tools aimed at financial institutions, which is highly significant and does not depend on whether the implementing country is the origin country or the destination country. This means that if a destination country tightens the regulatory stance, this leads to also foreign banks retreating from the more heavily regulated market. My results thus do not support the existence of funding advantage or opportunity for regulatory arbitrage for banks operating in a country where they are not under the national supervision. On the other hand, when an origin country implements new macroprudential regulation aimed at financial institutions, this also leads to less cross-border lending. This might be because banks retreat from the more risky foreign markets to be better positioned to comply with the more stringent regulatory rules. Thus my results support the notion that the effects of implementing macroprudential regulation do leak across borders through international lending, but in the sense that these measures make banks less likely to extend credit abroad.
+
+It should be noted that these results are somewhat contradictory to results in previous papers. For example Cerrutti et al. (2017a) find a positive relationship between the use of macroprudential tools and cross-border lending. Also Avdjiev et al. (2017) find that tightening of macroprudential regulation has an expansionary effect on cross-border lending. The main difference between my approach and these previous papers is the way the gravity framework allows for analysing both directions in a bilateral economic relationship.  
+% < add houston et al results
+
+As robustness checks I have done the estimations with alternative specifications, such as with different control variables and with regional dummies instead of country fixed effects as a proxy for the multilateral resistance term. I have also estimated the model with different subsets of the sample by including only developed economies and by dropping the small financial centers from the sample. The results, presented in Table \ref{tab:robust1} and Table \ref{tab:robust2}, are surprisingly robust to these alternative specifications. 
+
+My results thus show that the effects of macroprudential tools do have a statistically significant effect on the bilateral holdings of bank assets. The average effects are however rather small in absolute size, and thus the results support the notion that at least so far, the cross-border spillovers from macroprudential policies have been rather modest. One should however keep in mind, that the most of the bilateral holdings are very small, in fact zero, thus skewing the mean and thus the average effects downwards. Recall that the standard deviation of the observations was almost ten times as large as the mean, meaning that even though the majority of holdings are small, some are very large indeed. The effects on these very large holdings could potentially be substantial. This hypothesis is supported by the result that shows the absolute value of the effects increasing when only the advanced countries are included in a sub-sample. Further validation would require robustness checks by dividing the sample in to sub-samples in terms of the size of bilateral bank asset holdings.
+
+
+\begin{table}[!h]
+\centering
+\begin{tabular}{ l l l l l l}
+\hline
+Specification&(3)&&&(4)& \\
+Depvar: $ba_{od}$&&&&&\\
+\hline
+$log(GDP_{o})$&-0.329&(0.246)&&-0.338&(0.246)\\
+$log(GDP_{d})$&1.121***&(0.364)&&1.122***&(0.364)\\
+$log(distw_{od})$&-0.678****&(0.049)&&-0.669****&(0.051)\\
+$mpif_{d}$&-0.071***&(0.026)&&-0.071***&(0.026)\\
+$mpif_{o}$&-0.108****&(0.027)&&-0.108****&(0.027)\\
+$mpib_{d}$&0.030&(0.033)&&0.030&(0.033)\\
+$mpib_{o}$&0.105**&(0.045)&&0.105**&(0.044)\\
+Controls:&&&&&\\
+gravity &Smaller set&&&Yes& \\ 
+financial sophistication &Smaller set&&&Yes& \\
+Multilateral resistance: & \multicolumn{2}{l}{Country fixed effects} && \multicolumn{2}{l}{Regional dummies} \\
+\hline
+$R^2$&0.91&&&0.91&\\
+\hline
+\multicolumn{6}{l}{Standard errors adjusted for 3 509 clusters. Reported in parantheses. }\\
+\hline
+\multicolumn{6}{l}{\footnotesize Significance at the 10\%, 5\%, 1\% and 0.1\% levels is denoted by *, **, *** and ****.}\\
+\end{tabular}
+\caption{Results with a different set of controls}
+\label{tab:robust1}
+\end{table}
+
+\begin{table}[!h]
+\centering
+\begin{tabular}{ l l l l l l}
+\hline
+Specification&(5)&&&(6)& \\
+Depvar: $ba_{od}$&&&&&\\
+\hline
+$log(GDP_{o})$&-0.473&(0.658)&&0.173&(0.315)\\
+$log(GDP_{d})$&0.893&(0.773)&&1.87***&(0.482)\\
+$log(distw_{od})$&-0.602****&(0.054)&&-0.587****&(0.059)\\
+$mpif_{d}$&-0.100****&(0.031)&&-0.097****&(0.027)\\
+$mpif_{o}$&-0.118****&(0.031)&&-0.128****&(0.030)\\
+$mpib_{d}$&0.038&(0.039)&&0.020&(0.033)\\
+$mpib_{o}$&0.131**&(0.055)&&0.104**&(0.047)\\
+Controls:&&&&&\\
+gravity &Yes&&&Yes& \\ 
+financial sophistication &Yes&&&Yes& \\
+\hline
+Sample &\multicolumn{2}{l}{Advanced economies}&&\multicolumn{2}{l}{No offshore centers} \\
+Observations &12 012&&&73 296& \\
+\hline
+$R^2$&0.93&&&0.91&\\
+\hline
+\multicolumn{6}{l}{Standard errors adjusted for k clusters. Reported in parantheses. }\\
+Clusters &497&&&2 990& \\
+\hline
+\multicolumn{6}{l}{\footnotesize Significance at the 10\%, 5\%, 1\% and 0.1\% levels is denoted by *, **, *** and ****.}\\
+\end{tabular}
+\caption{Results with a different sample}
+\label{tab:robust2}
+\end{table}
+
+%Interpreting these marginal effects as percent changes in the dependent variable requires some focus. Recall that the equation to be estimated is a combination of log-log and log-lin. Thus the marginal effects are interpreted differently depending on whether the independent variable is in logs or in integers. In a log-log equation, the marginal effect is interpreted as an elasticity, so a one percent change in the independent variable leads to a percent change the size of the marginal effect in the dependent variable. In a log-lin equation, one unit change in the independent variable instead leads to a percent change in the dependent variable, that is roughly hundred times the size of the marginal effect. Thus in for example the second specification, when the macroprudential stance on say capital requirements of a destination country is tightened, i.e. the $mpif_d$ index rises by one unit, the effect on the dependent variable is in fact quite large: The probability of a positive level of international lending between the country pair increases by 2.4 \%, and the level of holdings, conditional on them being positive, decreases by 9.8 \%.
+
+
+\cleardoublepage
+
+\newpage
+\section{Conclusions}
+
+My preliminary results indeed appear to show that the gravity model can be of use in the study of cross-border spillovers of macroprudential regulation through international lending. My results also support the notion that the effects of macroprudential policies spill across borders through international lending.  The effect of implementing macroprudential regulation aimed at financial institutions leads to smaller bilateral cross-border bank asset holdings regardless of whether the policies are implemented by the country of origin or the destination country. The effects are statistically significant. The effects from macroprudential policies aimed at borrowers are on the other hand positive, but only significant when the policy is implemented in the origin country.
+
+
+(to be finished)
+ 
+ \newpage
+ \section*{References}
+ 
+Agénor P., Gambacorta L., Kharroubi E., Lombardo G. and Pereira da Silva L., 2017. “The international dimensions of macroprudential policies”. BIS Working papers, No 643.
+
+Aiyar, S., Calomiris, C. W., Wieladek, T., 2014. “Does Macro-Pru Leak? Empirical Evidence from a UK Natural Experiment.” Journal of Money, Credit and Banking 46, 181-214.
+
+Apergis, N., 2017. “Monetary policy and macroprudential policy: new evidence from a world panel of countries”. Oxford bulletin of economics and statistics, 79, 3 (2017) 0305-9049.
+
+Avdjiev, S., Koch, C., McGuire, P., von Peter, G., 2017. "International prudential spillovers: a global perspective." International Journal of Central Banking, Vol. 13, No. S1.
+
+Blanchard, O., Dell’Ariccia, G., Mauro, P., 2010. “Rethinking macroeconomic policy”. IMF Staff Position Note SPN/10/03.
+
+%Blanchard, O., Galí, J., 2007. Real wage rigidities and the new keynesian model. Journal Money, Credit and Banking. 39 (s1), 35–65.
+
+Borio, C., 2009. “Implementing the macroprudential approach to financial regulation and supervision”. Banque de France Financial Stability Review No. 13.
+
+Borio, C., 2011. “Implementing a macroprudential framework: blending boldness and realism”. Capitalism and Society, 6(1):1-25.
+
+Boyer, P., Kepf, H., 2016. “Regulatory arbitrage and the efficiency of banking regulation”. BAFFI CAREFIN Centre Research Paper No. 2016-18.
+
+Bruno, V., Shim, I., Shin, H.S., 2017. “Comparative assessment of macroprudential policies”. Journal of Financial Stability, 28 (2017) 183-202.
+
+Bruno, V., Shin, H. S., 2015. “Capital flows and the risk-taking channel of monetary policy.” Journal of Monetary Economics, 71, 119-32.
+
+Buch, C., Goldberg, L., 2016. “Cross-border prudential policy spillovers: How much? How important? Evidence from the international banking research network”. NBER Working Paper 22874.
+
+%Calvo, G. A., Leiderman, L., Reinhart, C. M., 1996. “Inflows of capital to developing countries in the 1990s”. Journal of Economic Perspectives, Vol. 10, No. 2, pp. 123-39.
+
+Carvalho, F., Castro, M., 2017. “Macroprudential policy transmission and interaction with fiscal and monetary policy in an emerging economy: a DSGE model for Brazil”. Banco Central do Brasil Working Paper Series, 453.
+
+%Cerutti, E., Claessens, S., Rose, A. K., 2017. “How important is the global financial cycle? Evidence from capital flows”. CEPR Discussion paper 12075.
+
+Cetorelli, N., Goldberg, L., 2012. “Banking globalization and monetary transmission”. The Journal of Finance, vol. 67, No. 5, pp. 1811-43.
+
+Chen W., Phelan G., 2017. “Macroprudential policy coordination with international capital flows”. 
+
+%Chinn, M.D., Ito, H., 2008. “A new measure of financial openness”. Journal of Comparative Policy Analysis 10 (3), 309–322.
+
+Claessens, S., Ghosh, S., Mihet, R., 2013. “Macroprudential policies to mitigate financial
+system vulnerabilities”. Journal of International Money and Finance 39, 153–185.
+
+%Clancy D., Merola R., 2017. “Countercyclical capital rules for small open economies”. Journal of Macroeconomics, 000 (2017) 1-20.
+
+%Couppey-Soybeyran J., Dehmej S., 2017. “The role of macro-prudential policy in the prevention and correction of divergences in the euro area”.
+
+%Davis J.S., Presno I., 2017. “Capital controls and monetary policy autonomy in a small open economy”. Journal of Monetary Economics, 85, 114-130.
+
+Dehmej S., Gambacorta L. (2015/17). “Macroprudential policy in a monetary union”.
+
+Dell’Ariccia, G., Igan, D., Laeven, L., Tong, H., Bakker, B., Vandenbussche, J., 2012.
+“Policies for macrofinancial stability: how to deal with credit booms”. IMF Staff
+Discussion Note 12/06.
+
+%Eichengreen, 1992. “Golden Fetters: The Gold Standard and the Great Depression, 1919–39”. Oxford University Press.
+
+Engel, Charles. 2009. “Exchange Rate Policies.” Federal Reserve Bank of Dallas Staff Papers, no. 8, 2009.
+
+Engel, C., 2015. “Macroprudential policy in a world of high capital mobility: policy implications from an academic perspective”. NBER Working Papers, No 20951.
+
+Farhi, E., Werning, I., 2016. “A theory of macroprudential policies in the presence of nominal rigidities”. Econometrica, Vol. 84, No. 5, 1645-1704.
+
+Fendoglu, S. (2017). “Credit cycles and capital flows: effectiveness of the macroprudential policy framework in emerging market economies”. Journal of Banking and Finance, 79, 110-128.
+
+%Fleming, M., 1962. “Domestic financial policies under fixed and under floating exchange rates”. IMF staff papers, Vol. 9, No. 3, pp. 369-80.
+
+%Forbes, K.J., Warnock, F.E., 2012. “Capital flow waves: Surges, stops, flight and retrenchment”. Journal of International Economics 88(2): 235-51. 
+
+Galati, G., Moessner, R., 2013. “Macroprudential policy - a literature review”. Journal of economic surveys, Vol. 27, No. 5, pp. 846-78.
+
+Goldberg, L., 2013. “Banking Globalization, Transmission, and Monetary Policy Autonomy.” Sveriges Riksbank Economic Review, Vol. 3, pp. 161–93.
+
+Gourinchas, P.-O., Obstfeld, M., 2012. “Stories of the Twentieth Century for the Twenty-First.” American Economic Journal: Macroeconomics, Vol. 4, No. 1, pp. 226–65.
+
+Head, K., Mayer, T., 2014. "Gravity Equations. Workhorse, Toolkit and Cookbook." In Gopinath, Helpman, Rogoff (Eds.). Handbook of International Economics, vol. 4. Elsevier.
+
+International Monetary Fund (IMF), 2011. “Macroprudential policy: an organizing framework”. Prepared by the Monetary and Capital Markets Department.
+
+Jeanne, O., 2012. “Capital Flow Management.” American Economic Review Papers and Proceedings 102, 203-206.
+
+Jorda, O., Schularick, M., Taylor, A., 2011. “Financial crises, credit booms, and external imbalances: 140 years of lessons”. IMF Economic Review 59, 340–378.
+
+%Klein, M. W., Shambaugh, J. C., 2013. “Rounding the Corners of the Policy Trilemma: Sources of Monetary Policy Autonomy.” NBER Working Papers 19461.
+
+Korinek, A., 2011a. “Hot Money and Serial Financial Crises.” IMF Economic Review 59, 306-339.
+
+Korinek, A., 2011b. “The New Economics of Prudential Capital Controls: A Research Agenda.” IMF Economic Review 59, 523-561.
+
+Korinek, A., Sandri, D., 2014. “Capital controls or macroprudential regulation?” NBER Working Paper No. 20805.
+
+Longstaff, F. A., Pan, J., Pedersen, L. H., Singleton, K. J., 2011. “How sovereign is sovereign credit risk?”. American Economic Journal: Macroeconomics, Vol. 3, No. 2, pp. 75-103.
+
+McCauley, R., McGuire, P., Sushko, V., 2015. “Global dollar credit”. Economic Policy, April 2015, pp. 187-229.
+
+%Miranda-Agrippino, S., Rey, H., 2015. “World asset markets and the global financial cycle”. CEPR DP 10936, NBER Working Paper No. 21722.
+
+Meller, B., Metiu, N., 2017. “The synchronization of credit cycles”. Journal of Banking and Finance 82, 98-111.
+
+%Mundell, R., 1963. “Capital mobility and stabilization policy under fixed and flexible exchange rates”. Canadian Journal of Economic and Political Science, Vol. 29, No. 4, pp. 475-85.
+
+Obstfeld, M., 2015. “Trilemmas and trade offs: Living with financial globalization”. BIS Working Paper no. 480. 
+
+%Obstfeld, M., Shambaugh, J. C., Taylor, A. M., 2005. “The trilemma in history: tradeoffs among exchange rates, monetary policies, and capital mobility”. Review of Economics and Statistics, 87 (3), 423–438.
+
+%Passari, E., Rey, H., 2015. “Financial flows and the international monetary system”. The Economic Journal, Vol. 125, No.584, pp. 675-98.
+
+Portes, R., Rey, H., 2005. “The determinants of cross-border equity flows”. Journal of International Economics vol. 65, pp. 269-296.
+
+Poutineau, J., Vermandel, G., 2017. “Global banking and the conduct of macroprudential policy in a monetary union”. Journal of Macroeconomics (2017) 1-26.
+
+%Raddatz, D. Saravia, and J. Ventura of Central Banking, Analysis, and Economic Policies Book Series (Central Bank of Chile), Chapter 2, pp. 13-78.
+
+Reinhardt, D., Sowerbutts, R., 2015. “Regulatory arbitrage in action: evidence from banking flows and macroprudential policy”. Bank of England Staff Working Paper No. 546.
+
+Reinhart, C., Rogoff, K., 2009. This Time Is Different: Eight Centuries of Financial Folly. Princeton University Press.
+
+%Rey, H., 2013. “Dilemma not trilemma: the global financial cycle and monetary policy independence”. Proceedings - Economic Policy Symposium. Jackson Hole: Federal Reserve of Kansas City Economic Symposium, 285-333.
+
+%Rey, H., 2015. “Dilemma not trilemma: the global financial cycle and monetary policy independence”. NBER Working paper No. 21162.
+
+%Rey, H., 2016. “International channels of transmission of monetary policy and the Mundellian trilemma”. IMF Economic Review, vol. 64, No. 1.
+
+Rochet, J.-C., 2017. “Macroprudential and systemic risk - an overview of recent developments”. A presentation at the Second annual ECB macroprudential policy and research conference. 
+
+Santos Silva, Tenreyro, 2006. “The log of gravity”. The Review of Economics and Statistics, 2006, 88(4): 641-658.
+
+Schularick, M., Taylor, A. M., 2012. “Credit Booms Gone Bust: Monetary Policy, Leverage Cycles, and Financial Crises, 1870-2008”. American Economic Review, vol. 102, pp. 1029-1061.
+
+Schoenmaker, D.,Wierts, P.J., 2011. “Macroprudential Policy: The Need for a Coherent Policy Framework”. DSF Policy Paper 13. Duisenberg School of Finance, Amsterdam, the Netherlands.
+
+Schwanebeck, B., Palek, J., 2016. “Optimal Monetary and Macroprudential Policy in a Currency Union”. Beiträge zur Jahrestagung des Vereins für Socialpolitik 2016: Demographischer Wandel - Session: Monetary Policy, No. B17-V1.
+
+Shin, H. S., 2012. “Global banking glut and the loan risk premium”. IMF Economic Review, Vol. 60, No. 2, pp. 155-92.
+
+\end{document}
