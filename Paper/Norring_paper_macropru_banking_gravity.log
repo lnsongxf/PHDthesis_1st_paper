@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.6.5)  11 SEP 2018 10:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.6.5)  11 SEP 2018 13:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -843,16 +843,16 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 [28] [29] [30] [31
 
 ] [32] [33] [34] [35]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 609.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 609.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 607.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 607.
 
 (./Norring_paper_macropru_banking_gravity.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 609.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 609.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 607.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 607.
 Package rerunfilecheck Info: File `Norring_paper_macropru_banking_gravity.out' 
 has not changed.
 (rerunfilecheck)             Checksum: 5F6D1924DA1759BF0B58A6E59923D826;1116.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 609.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 607.
  ) 
 Here is how much of TeX's memory you used:
  18667 strings out of 492649
