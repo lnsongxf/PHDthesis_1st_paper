@@ -128,10 +128,41 @@
 \item Consider in parallel new data on macroprudential instruments and bilateral cross-border bank asset holdings
 \item Provide a multi-country look at the spillovers of macroprudential policy via international lending with a set of countries larger than in previous studies
 \item Use the gravity model of international banking to study the effects of macroprudential policy that leak across borders via international lending 
-\item Estimate the model using a method currently considered the most theory-consistent by the more advanced literature on international trade
+\item Estimate the model using Poisson pseudo-maximum-likelihood (PPML) procedure, a method currently considered the most theory-consistent by the more advanced literature on international trade
 \end{itemize}
 \end{block}
 
+\end{frame}
+
+\section{Estimation}
+
+%There are a number of different estimation methods to be used to estimate the gravity equation. The most simple one has also been the most commonly used: a panel fixed effects OLS with zero observations excluded by taking log. This is however a very simplistic approach because as with any bilateral data, the share of zeros is usually very high. The problem of zero observations is usually acknowledged but then ignored by the early gravity papers. 
+%The method that is perhaps on the most firm theoretical footing is the one proposed by Santos Silva and Tenreyro: the Poisson pseudo-maximum-likelihood (PPML). This method doesn't require the model to be log-linearized, so there is no problem of loosing out on the zero observations. 
+%One more method I have ran into was proposed by Drakos and others in 2014. Their idea is to take the dependent variable, portfolio investments in their case, as dichotomous, i.e. taking value 1 if the investment holding is positive and zero otherwise. This allows them to use a panel probit and also to consider a dynamic version of the model. Their approach however is unable to say anything about the determinants of the level of investment holdings.
+%My choice is not the PPML, but instead a different way to address the limited nature of my dependent variable. This estimation method is called the double-hurdle model and it was first proposed by Cragg in the early seventies and developed further by Heckmann. This model ensures an appropriate treatment of zero observations and it considers zeros as true zeros, that is not as missing values as the sample selection model does. An additional feature of the model is that allows for breaking the problem into two equation: a participation equation that estimates the determinants of the dependent variable being positive and a level equation which estimates the determinants of the level of the dependent variable, given that it is positive. The decision to invest in a foreign country or to extend credit to foreign borrowers, is intuitively quite easy to separate into these different stages of decision making, thus adding to the double-hurdle model's appeal. Now a Tobit model can do this, but what really makes the double-hurdle model interesting is that it allows for the two processes to be different. The size of the coefficients, or their sign can be different in the two equations, even the independent variables can be different altogether. A classic example of the power of the double-hurdle model is the effect of education on smoking: a more educated person is less likely to smoke, i.e. the coefficient is negative in the participation equation, but given that a person smokes, a more educated person is likely to smoke more, i.e. the coefficient is positive in the level equation. 
+
+\begin{frame}{Possible estimations methods}
+\begin{block}{Bilateral data:}
+Large share of zero observations, heteroskedasticity and clustering
+\end{block}
+
+\begin{block}{Some methods that have been used in similar set-ups:}
+\begin{itemize}
+\item Panel fixed effects OLS with zero observations excluded (e.g. Portes and Rey, 2005) - \textit{worst option}
+\item Panel probit with a dichotomous dependent variable (proposed Drakos et al., 2014) - \textit{lots of lost information}
+\item A two-stage model such as the double-hurdle model (e.g. Cragg, 1971, Heckman, 1976) - \textit{strict distributional assumptions \& a computational nightmare}
+\item \textbf{Poisson pseudo-maximum-likelihood (PPML) approach} (proposed by Santos Silva and Tenreyro, 2006)
+   \end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Poisson pseudo-maximum-likelihood (PPML) approach}
+\begin{itemize}
+\item Santos Silva and Tenreyro show that log-linearizing and OLS leads to large upward bias in results due to inappropriate handling of zeros, heteroskedasticity and clustering
+\item PPML allows for estimating the gravity equations in their multiplicative form
+\item PPML is consistent with zeros, heteroskedasticity and clustering
+\item In trade literature the PPML is considered the most theory-consistent method of estimating a gravity equation - use of the method in applications of gravity in financial asset trade still very limited 
+\end{itemize}
 \end{frame}
 
 \section{Data}
@@ -150,7 +181,7 @@
 \item $mpif$ aggregates 10 tools that include e.g. different capital requirements, limits on interbank exposures, loan growth, leverage ratio etc.
 \item $mpib$ aggregates 2 tools; LTV-ratio and DTI-ratio
 \end{itemize}
-\item Described in Cerrutti et al. (2017a) and used to show that there is a link between slower credit growth and the use of macroprudential policy
+%\item Described in Cerrutti et al. (2017a) and used to show that there is a link between slower credit growth and the use of macroprudential policy
 \end{itemize}
 \end{frame}
 
@@ -177,7 +208,7 @@ $mpib$&0.36&0.66&0&2&0-2&1 638 \\
 \centering
 \begin{tabular}{ l l l l l l l l l }
 \hline
-Value&0&1&2&3&4&5&6&7-10\\
+n&0&1&2&3&4&5&6&7-10\\
 \hline
 $mpif$&28.9\%&29.9\%&23.8\%&11.7\%&3.7\%&1.7\%&0.4\%&- \\
 $mpib$&74.6\%&15.3\%&10.2\%&-&-&-&-&- \\
@@ -195,13 +226,7 @@ $mpib$&74.6\%&15.3\%&10.2\%&-&-&-&-&- \\
 \begin{block}{Bilateral cross-border bank asset holdings}
 \begin{itemize}
 \item From BIS Locational Banking Statistics
-\item I build a network of bilateral holdings for pairs of origin countries and destination countries that are both BIS reporting countries or where either the origin country or the destination country is a BIS reporting country (following Brei and von Peter, 2018):
-\begin{itemize}
-\item O reports to BIS: use data on assets
-\item O does not report to BIS, but D does: use data on liabilities
-\item Neither O nor D reports to BIS: missing value
-\end{itemize}
-\item Maximum coverage: 44 reporting countries, 216 counterpart countries and quarterly data since 1977
+\item I build a network of bilateral holdings for pairs of origin countries and destination countries that are both BIS reporting countries or where either the origin country or the destination country is a BIS reporting country (following Brei and von Peter, 2018)
 \item For the purpose of this paper: 33 reporting countries, 84 counterpart countries and annual data for 2000-2013
 \end{itemize}
 \end{block}
@@ -212,27 +237,23 @@ $mpib$&74.6\%&15.3\%&10.2\%&-&-&-&-&- \\
 
 \begin{frame}{Data: The dependent variable}
 \begin{table}
-\tiny
 \centering
-\begin{tabular}{l|r r r r}
+\begin{tabular}{l|r r }
 \hline
- & $ba_{od}$ & $ba_{od} > 0$ & $log(ba_{od} + 1)$ & $log(ba_{od})$ \\ 
+ & $ba_{od}$ & $ba_{od} > 0$  \\ 
 \hline
-N of pairs & 6 112 & 4 674 & 6 112 & 4 674 \\
-N of periods & 14 & 14 & 14 & 14 \\
-N of observations & 85 560 & 51 013 & 85 560 & 51 013 \\
+N of pairs & 6 112 & 4 674  \\
+N of periods & 14 & 14  \\
+N of observations & 85 560 & 51 013 \\
 \hline
-%Unit & \multicolumn{4}{l}{Thousands of US dollars} \\
-%\hline
-Mean & 6 277 587 & 11 281 030 & 6.73 & 12.10 \\
-Standard deviation & 56 285 910 & 75 081 810 & 6.45 & 3.12 \\
-Min & 0 & 0.01 & 0 & 2.30\\
-Max & 2 962 748 000 & 2 962 748 000 & 21.81 & 21.81 \\
+Mean & 6 278 & 11 281  \\
+Standard deviation & 56 286 & 75 082 \\
+Min & 0 & 0.01 \\
+Max & 2 962 748 & 2 962 748 \\
 \hline
-Share of 0s & 44.35 \% & - & 44.35 \% & -  \\
+\textbf{Share of 0s} &\textbf{ 44.35 \%} & - \\
 \hline 
-\multicolumn{5}{l}{\tiny Mean, standard deviations, min and max in thousands of US dollars.}
-%Number of pairs & \multicolumn{3}{l}{test}\\
+\multicolumn{3}{l}{\footnotesize Mean, standard deviations, min and max in millions of US dollars.}
 \end{tabular}
 \caption{Summary statistics of the dependent variable.}
 \label{tab:ba_od}
@@ -266,58 +287,105 @@ Share of 0s & 44.35 \% & - & 44.35 \% & -  \\
 \end{block}
 \end{frame}
 
+\begin{frame}{Data: Other independent variables}
+\begin{table}[!h]
+\centering
+\begin{tabular}{ l l l l l l }
+\hline
+Variable&Mean&Std. dev.&Min&Max&Obs.\\
+%\hline
+%$gdp_o$&900 040&1.28&20.78&25.98&85 560 \\
+%$gdp_d$&23.19&2.68&12.07&30.17&85 560 \\
+%$distw_{od}$&8.58&0.81&4.39&9.76&85 560 \\
+\hline
+%$gdp_o$&900 027&2 140 518&321&1.62e+07&85 560 \\
+%$gdp_d$&&&&&85 560 \\
+%$distw_{od}$&&&&&85 560 \\
+%\hline 
+$log(gdp_o)$&11.93&2.24&5.78&16.60&85 560 \\
+$log(gdp_d)$&11.93&2.24&5.78&16.60&85 560 \\
+$log(distw_{od})$&8.70&0.81&5.08&9.89&85 560 \\
+\hline
+\multicolumn{6}{l}{\footnotesize Mean, standard deviations, min and max of GDP in millions of US dollars.} \\
+\multicolumn{6}{l}{\footnotesize Mean, standard deviations, min and max of distance in kilometers.}
+\end{tabular}
+\caption{Continuous independent variables}
+\label{tab:cont}
+\end{table}
+\end{frame}
+
+\begin{frame}{Data: Other independent variables}
+\begin{table}[!h]
+\centering
+\begin{tabular}{ l l l l l}
+\hline
+Value of variable&0&1&2&Obs.\\
+\hline
+$incomegr$ & 11.52 \% & 43.81 \% & 44.67 \% &85 560 \\
+$finopen$ & 44.37 \% & 55.63 \% & - & 85 560 \\
+$contig$ & 98.23 \% & 1.77 \% & - & 85 560 \\
+$comlangof$ & 88.15 \% & 11.85 \% & - & 85 560 \\
+$col45$ & 98.49 \% & 1.51 \% & - & 85 560 \\
+$comcur$ & 96.63 \% & 3.37 \% & - & 85 560 \\
+$wto$ & 8.62 \% & 91.38 \% & - & 85 560 \\
+$eu$ & 70.63 \% & 29.37 \% & - & 85 560 \\
+\hline
+\end{tabular}
+\caption{Dichotomous controls: \%-share of observations}
+\label{tab:dich}
+\end{table}
+\end{frame}
+
 \section{Model}
 
 %Let's then move on to the gravity model itself. Here I have first the most simple form of the log-linearized gravity equation. This equation relates the log of bilateral assets to the logs of the respective economic masses and a friction term tau, which represents transaction costs. In the most simple versions of the model these costs are simply proxied by the bilateral distance. 
 %Usually however more bells and whistles are added to the equation. It is common to control for different frictions by adding say different variables that account for frictions in information transmission and in transaction technology. The multilateral resistance term is often proxied by regional dummies. It is also common to control for macroeconomic conditions by using time fixed effects. 
 
-\begin{frame}{The gravity model of financial asset trade}
-\textbf{The gravity equation in the most simple form:}
-\begin{align}
-log(asset_{od,t}) = & \alpha_1 log(M_{o,t}) + \alpha_2 log(M_{d,t})  \nonumber \\
-& + \alpha_3 log(\tau_{od,t}) + u_{od,t}, \\
-& o, d=1, ..., N \text{ and } t=1, ..., T. \nonumber
-\label{simple gravity}
-\end{align}
-\textbf{The gravity equation in the form often estimated:}
-\begin{align}
-log(asset_{od,t})= & \alpha_1 log(GDP_{o,t})+\alpha_2 log(GDP_{d,t}) +\alpha_3 log(dist_{od}) \nonumber\\
-& + \text{information variables} \nonumber\\
-& + \text{transaction technology variables}\nonumber\\
-& + \text{multilateral resistance} + \text{time dummies} \nonumber\\
-& + \text{constant}+ u_{od,t},  \\
-& o, d=1, ..., N \text{ and } t=1, ..., T. \nonumber
-\label{usual gravity}
-\end{align}
-\end{frame}
+%\begin{frame}{The gravity model of financial asset trade}
+%\textbf{The gravity equation in the most simple form:}
+%\begin{align}
+%log(asset_{od,t}) = & \alpha_1 log(M_{o,t}) + \alpha_2 log(M_{d,t})  \nonumber \\
+%& + \alpha_3 log(\tau_{od,t}) + u_{od,t}, \\
+%& o, d=1, ..., N \text{ and } t=1, ..., T. \nonumber
+%\label{simple gravity}
+%\end{align}
+%\textbf{The gravity equation in the form often estimated:}
+%\begin{align}
+%log(asset_{od,t})= & \alpha_1 log(GDP_{o,t})+\alpha_2 log(GDP_{d,t}) +\alpha_3 log(dist_{od}) %\nonumber\\
+%& + \text{information variables} \nonumber\\
+%& + \text{transaction technology variables}\nonumber\\
+%& + \text{multilateral resistance} + \text{time dummies} \nonumber\\
+%& + \text{constant}+ u_{od,t},  \\
+%& o, d=1, ..., N \text{ and } t=1, ..., T. \nonumber
+%\label{usual gravity}
+%\end{align}
+%\end{frame}
 
 %For the purpose of this paper I formulate the gravity equation like this. The dependent variable is the log of bilateral banking assets, held by banks in origin country with destination country as the counterpart. The economic masses are represented by GDP in logs. Distance is also in logs. 
 %I basically add this second row in to the equation, that is I have four variables that account for the use of prudential tools in the two countries. First is the use of tools that target borrowers in the origin country, second the use of tools that target borrowers in the destination countries. Third and fourth document the use of prudential tools that target financial institutions in the origin and destination country respectively. 
 %Then I include the most common gravity controls and controls for financial sophistication in both countries. I proxy multilateral resistance by using regional dummies, and include time dummies to account for macroeconomic conditions. 
 %There are 117 origin and destination countries, which makes up over 6000 bilateral pairs. The time runs from 1 to 14, i.e. from 2000 to 2013. 
 
-\begin{frame}{The gravity model for the purpose of this paper}
+\begin{frame}{The gravity equation to be estimated using PPML}
 \begin{align}
-log(ba_{od,t})= & \alpha_1 log(GDP_{o,t})+\alpha_2 log(GDP_{d,t}) +\alpha_3 log(distw_{od}) \nonumber\\
-& + \alpha_4 mpif_{d,t} + \alpha_5 mpif_{o,t} + \alpha_6 mpib_{d,t} + \alpha_7 mpib_{o,t} \nonumber\\
-& + \text{gravity controls} \nonumber\\
-& + \text{controls for financial sophistication} \nonumber\\
-& + \text{multilateral resistance} \nonumber\\
-& + \text{time dummies} \nonumber\\
-& + \text{constant}+ u_{od,t},  \\
-& o, d=1, ..., 117 \text{ and } t=1, ..., 14. \nonumber
-\label{my gravity}
+ba_{od,t} = & \alpha_t * log(GDP_o,t)^{\beta_1} * log(GDP_o,t)^{\beta_2} * log(distw_{od})^{\theta} \nonumber \\
+& * mpif_{d,t}^{\gamma_1} * mpif_{o,t}^{\gamma_2} * mpib_{d,t}^{\gamma_3} * mpib_{o,t}^{\gamma_4} \nonumber \\
+& * O_{o,t} * D_{d,t} * e^{\lambda'z_{od,t}}, \\
+& o, d=1, ..., 117 \text{ and } t=1, ..., 14, \nonumber
+\label{eq:gravity}
 \end{align}
+where the origin and destination country fixed effects are included in $O_{ot}$ and $D_{dt}$ respectively, and the gravity and financial sophistication controls are included in the term $z_{od,t}$. The coefficients $\gamma_1$, $\gamma_2$, $\gamma_3$ and $\gamma_4$ measure the effect of implemented macroprudential policies. The coefficient $\theta$ measures the distance effect.
 \end{frame}
 
 %Let's next consider the hypotheses in a bit more detail to better fit them into the bilateral gravity framework. Recall first that I had to hypotheses: one concerning regulation aimed at financial institutions and one for regulation aimed at borrowers. The important assumption here underpinning the different effects of these regulations is that they differ in scope.
 
-\begin{frame}{Hypotheses in more detail}
-\begin{block}{Hypotheses - regulations differ} 
-\begin{itemize}
-\item \textbf{Tightening capital requirements for financial institutions} leads to domestic agents borrowing more abroad 
-\item \textbf{Tightening regulation that applies to domestic borrowers} does not lead to more borrowing from abroad, but instead banks might move lending to less regulated markets
-\end{itemize}
+\begin{frame}{Hypotheses - regulations differ}
+\begin{block}{Hypothesis 1} 
+Implementing macroprudential regulation aimed at domestic financial institutions leads to domestic agents borrowing more abroad.
+\end{block}
+
+\begin{block}{Hypothesis 2} 
+Implementing macroprudential regulation aimed at domestic borrowers does not lead to more borrowing from abroad, but instead domestic banks might move lending to less regulated markets.
 \end{block}
 \end{frame}
 
@@ -325,227 +393,144 @@ log(ba_{od,t})= & \alpha_1 log(GDP_{o,t})+\alpha_2 log(GDP_{d,t}) +\alpha_3 log(
 %Tighter regulation in the destination country leads to higher banking flows from the origin to the destination as banks from the origin country take advantage of the funding differential. Thus a higher mpif index for destination country is expected to be associated with more cross-border lending.
 %On the other hand, tighter regulation in the origin country creates a funding advantage for foreign banks, increasing competition in the domestic market. This may lead to lower banking flows from origin country to destination country if banks from the origin reduce cross-border activity to better comply with regulation and to take on increased competition. Thus a higher mpif index for origin country is expected to be associated with less cross-border lending. 
 
-\begin{frame}{Hypotheses in more detail}
-\begin{block}{Tightening capital requirements for financial institutions}
-\begin{itemize}
-\item Regulation that applies to domestic banks and foreign subsidiaries, but not foreign branches
-\item Tighter regulation in the destination country leads to higher banking flows from O to D as banks from the origin country take advantage of a funding differential
-\begin{itemize}
-\item a higher $mpif_{d}$ is associated with a higher $ba_{od}$
-\end{itemize}
-\item Tighter regulation in the origin country may lead to lower banking flows from O to D as banks from the origin country reduce cross-border activity to better comply with the more stringent regulation
-\begin{itemize}
-\item a higher $mpif_{o}$ is associated with a lower $ba_{od}$
-\end{itemize}
-\end{itemize}
-\end{block}
-\end{frame}
+
 
 %The regulation aimed at domestic borrowers, because of say worryingly high growth in leverage growth, works differently, because it applies to domestic agents and via them to all banks operating in the domestic market. Now there is no funding advantage for any banks, and there is no effect on international lending through this channel. However, tighter regulation can still spill over, if banks retreat from a more regulated market to a less regulated one. Then
 %tighter regulation in the destination country leads to lower banking flows as banks from the origin country retreat from a more heavily regulated market. Thus a higher mpib index for the destination country is associated with lower banking flows from o to d.
 %Conversely, tighter regulation aimed at borrowers in the origin country would then be expected to lead to higher banking flows as banks from the origin country move to less regulated markets, as a clear instance of regulatory arbitrage. I.e. a higher mpib index for the the origin country is associated with higher banking flows. 
 % To be completely frank, these hypotheses are not consistently confirmed in the estimations. This may be because of the different uncertainties and peculiarities of the data, the highly non-linear model or then the channels of effect are somehow different. If you have some idea for how they could be different, I would be happy to discuss it. 
 
-\begin{frame}{Hypotheses in more detail}
-\begin{block}{Tightening regulation that applies to domestic borrowers}
-\begin{itemize}
-\item Regulation that applies to all banks operating in the country
-\item Tighter regulation in the destination country leads to lower banking flows from O to D as banks from the origin country retreat from a more heavily regulated market
-\begin{itemize}
-\item a higher $mpib_{d}$ is associated with a lower $ba_{od}$
-\end{itemize}
-\item Tighter regulation in the origin country leads to higher banking flows from O to D as banks from from the origin country move lending to less regulated markets (regulatory arbitrage)
-\begin{itemize}
-\item a higher $mpib_{o}$ is associated with a higher $ba_{od}$
-\end{itemize}
-\end{itemize}
-\end{block}
-\end{frame}
-
-
-\section{Estimation}
-
-%There are a number of different estimation methods to be used to estimate the gravity equation. The most simple one has also been the most commonly used: a panel fixed effects OLS with zero observations excluded by taking log. This is however a very simplistic approach because as with any bilateral data, the share of zeros is usually very high. The problem of zero observations is usually acknowledged but then ignored by the early gravity papers. 
-%The method that is perhaps on the most firm theoretical footing is the one proposed by Santos Silva and Tenreyro: the Poisson pseudo-maximum-likelihood (PPML). This method doesn't require the model to be log-linearized, so there is no problem of loosing out on the zero observations. 
-%One more method I have ran into was proposed by Drakos and others in 2014. Their idea is to take the dependent variable, portfolio investments in their case, as dichotomous, i.e. taking value 1 if the investment holding is positive and zero otherwise. This allows them to use a panel probit and also to consider a dynamic version of the model. Their approach however is unable to say anything about the determinants of the level of investment holdings.
-%My choice is not the PPML, but instead a different way to address the limited nature of my dependent variable. This estimation method is called the double-hurdle model and it was first proposed by Cragg in the early seventies and developed further by Heckmann. This model ensures an appropriate treatment of zero observations and it considers zeros as true zeros, that is not as missing values as the sample selection model does. An additional feature of the model is that allows for breaking the problem into two equation: a participation equation that estimates the determinants of the dependent variable being positive and a level equation which estimates the determinants of the level of the dependent variable, given that it is positive. The decision to invest in a foreign country or to extend credit to foreign borrowers, is intuitively quite easy to separate into these different stages of decision making, thus adding to the double-hurdle model's appeal. Now a Tobit model can do this, but what really makes the double-hurdle model interesting is that it allows for the two processes to be different. The size of the coefficients, or their sign can be different in the two equations, even the independent variables can be different altogether. A classic example of the power of the double-hurdle model is the effect of education on smoking: a more educated person is less likely to smoke, i.e. the coefficient is negative in the participation equation, but given that a person smokes, a more educated person is likely to smoke more, i.e. the coefficient is positive in the level equation. 
-
-\begin{frame}{Possible estimations methods}
-\begin{itemize}
-\item Panel fixed effects OLS with zero observations excluded (e.g. Portes and Rey, 2005)
-\item Poisson pseudo-maximum-likelihood (PPML) approach (proposed by Santos Silva and Tenreyro, 2006)
-\item Panel probit with a dichotomous dependent variable (proposed Drakos et al., 2014)
-\item My choice: the double-hurdle model
-\begin{itemize}
-\item A method first proposed by Cragg (1971) and developed further by Heckman (1976)
-\item Ensures an appropriate treatment of zero observations
-\item Breaks the equation into a participation equation and a level equation
-\item \textbf{Both parts can be determined by different processes}, i.e. an extension to Tobit
-\end{itemize}
-\end{itemize}
-\end{frame}
-
-%From this simple scatter plot, it is quite easy to argue for the use of the double-hurdle model. Recall that 45 % of all observations are zero. Then simply from eyeballing this graph one can see that the relationship between the bilateral banking asset holdings and distance would not be nearly as negative. 
-
-\begin{frame}{Why the double-hurdle?} 
-\begin{figure}
-\includegraphics[width=\textwidth]{scatter_lfit_log1_ba_od_log1_distw.png}
-\caption{\label{fig2}The observations obtained from the BIS LBS data.}
-\end{figure}
-\end{frame}
-
-\begin{frame}{Why the double-hurdle?} 
-\begin{figure}
-\includegraphics[width=\textwidth]{scatter_lfit_log_ba_od_log_distw.png}
-\caption{\label{fig2}The observations obtained from the BIS LBS data.}
-\end{figure}
-\end{frame}
-
-\begin{frame}{Why the double-hurdle?} 
-\begin{table}[!h]
-\tiny
-\centering
-\begin{tabular}{ l | c  c  c }
-&Probit (depvar $dba_{od}$) &FE OLS (depvar $log(ba_{od})$) \\
-\hline
-$log(GDP_{o})$&0.108****&0.356****&\\
-&(0.002)&(0.109)&\\
-$log(GDP_{d})$&0.128****&1.385****&\\
-&(0.002)&(0.110)&\\
-$log(distw_{od})$&-0.229****&-1.104****&\\
-&(0.006)&(0.050)&\\
-$mpif_{d}$&-0.008*****&-0.026&\\
-\textbf{effect positive} &(0.002)&(0.017)&\\
-$mpif_{o}$&\textbf{-0.008}****&\textbf{-0.046}***&\\
-\textbf{effect negative} &(0.002)&(0.018)&\\
-$mpib_{d}$&0.012****&0.056**&\\
-\textbf{effect negative} &(0.003)&(0.026)&\\
-$mpib_{o}$&\textbf{0.013}****&\textbf{0.068}**&\\
-\textbf{effect positive} &(0.003)&(0.030)&\\
-$$&&\\
-%&()&()&()&()&()&()\\
-gravity controls &Yes&Yes \\ 
-financial soph. ctrls &Yes&Yes \\
-regional &Yes&Yes \\
-\hline
-\multicolumn{3}{l}{\tiny Significance at the 10\%, 5\%, 1\% and 0.1\% levels is }\\
-\multicolumn{3}{l}{\tiny Sdenoted by *, **, *** and **** respectively.}\\
-\multicolumn{3}{l}{\tiny Standard errors in parentheses.}\\
-\multicolumn{3}{l}{\tiny The effects that are in line with hypotheses are bolded.}\\
-\end{tabular}
-\caption{Average marginal effects and hypotheses}
-\label{tab:methods}
-\end{table}
-\end{frame}
-
-
-
-%The equation I estimate is thus this one. In the first specification I include only the economic masses, distance and the macroprudential variables. To the second specification I add the gravity and financial sophistication controls and to the third also the regional dummies proxying multilateral resistance. Time dummies and a constant are included in all the specifications.
-%The first hurdle in the double hurdle estimates the effect of independent variables on the probability of bilateral bank asset holdings being positive. This equation is estimated using probit.
-%The level equation, or the second hurdle estimates the effect of a change on the level of bilateral banking assets conditional on the level being positive. 
-%According to the previous results on gravity equations alpha1 and alpha 2 should be positive and alpha 3 negative. This is indeed the case for all specifications. According to my hypotheses alpha 4 and and alpha 7 should be positive, and alpha 5 and alpha 6 should be negative, and this is the case half the time.
-
-\begin{frame}{The equation to be estimated}
-\begin{align}
-log(ba_{od,t})= & \alpha_1 log(GDP_{o,t})+\alpha_2 log(GDP_{d,t}) +\alpha_3 log(distw_{od}) \nonumber\\
-& + \alpha_4 mpif_{d,t} + \alpha_5 mpif_{o,t} + \alpha_6 mpib_{d,t} + \alpha_7 mpib_{o,t} \nonumber\\
-& + \text{gravity controls} \nonumber\\
-& + \text{controls for financial sophistication} \nonumber\\
-& + \text{multilateral resistance term} \nonumber\\
-& + \text{time dummies} \nonumber\\
-& + \text{constant}+ u_{od,t},  \\
-& o, d=1, ..., 117 \text{ and } t=1, ..., 14. \nonumber
-\label{my participation}
-\end{align}
-\begin{itemize}
-\item \textbf{The participation equation:} the effect of independent variables on the probability of $ba_{od,t}$ being positive
-\item \textbf{The level equation:} the effect of a change in independent variables on the level of $ba_{od,t}$ conditional on the level being positive
-\end{itemize}
-\end{frame}
-
 \section{Results}
 
-%For some reason running the double-hurdle on stata is horribly slow, so estimating these three specifications and calculating the needed marginal effects takes about three days. So after stata has been crunching numbers for some 72 hours, I get these marginal effects. The effects for the participation equation tell the effect a change in the independent variable has on the probability of the dependent variable being positive. The effects for the level equation tell the effect a change in the independent variable has on the level of the dependent variable, conditional on it being positive. 
-%What I found surprising about these effects is that they are practically all highly statistically significant. I would have expected that the effects for at least mpif_o to be less significant. I'm as of yet at least unable to say if this because these indices pick something that I should control in some other way, or if there is a bad endogeneity problem or something going on. This is something I should work on to really try to understand what's going on here.
+\begin{frame}{Results of the PPML estimation}
+    \begin{itemize}
+        \item Results are quite consistent over robustness checks with different specifications and with different subsets of the sample
+        \item Effects broadly as expected: effects of economic masses positive (when significant), of distance negative and of other controls as in previous studies
+        \item Effect of GDP of origin country insignificant: size of banking sector more appropriate? 
+        \item The effects of macroprudential regulation mostly statistically significant and with consistent signs, but the hypotheses are not confirmed
+          \end{itemize}
+\end{frame}
 
-%As I said before, my hypothesis are not consistently backed up by the results. Here I have in bold font the effects that are consistent with the hypothesis, and we can see that exactly half of the effects are of the sign I expected, but interestingly, even this is not consistent. So it's not so that all effects of say mpif_o are of the expected sign and all of mpif_d are not. So it's quite clear that some work is required to think the hypotheses and the channels of effect through clearly to build a coherent story of what's going on there. 
-
-\begin{frame}{Marginal effects and hypotheses}
-\tiny
+\begin{frame}{Results of the PPML estimation}
 \begin{table}[!h]
+\tiny
 \centering
-\begin{tabular}{ l l l l l}
+\begin{tabular}{ l l l l l l}
 \hline
-Specification&(1)&&(2)& \\
-Depvar: $log(ba_{od}+1)$&Participation&Level&Participation&Level\\
+Specification&(1)&&&(2)& \\
+Depvar: $ba_{od}$&&&&&\\
 \hline
-$log(GDP_{o}+1)$&0.08****&0.59****&0.08****&0.62****\\
-&(0.00)&(0.01)&(0.00)&(0.01)\\
-$log(GDP_{d}+1)$&0.09****&0.60****&0.09****&0.61****\\
-&(0.00)&(0.01)&(0.00)&(0.01)\\
-$log(distw_{od}+1)$&-0.16****&-0.81****&-0.10****&-0.88****\\
-&(0.00)&(0.01)&(0.00)&(0.01)\\
-$mpif_{d}$&-0.01****&-0.17****&\textbf{0.02}****&-0.10****\\
-\textbf{effect positive}  &(0.00)&(0.01)&(0.00)&(0.01)\\
-$mpif_{o}$&\textbf{-0.02}****&\textbf{-0.17}****&0.02****&\textbf{-0.09}****\\
-\textbf{effect negative} &(0.00)&(0.01)&(0.00)&(0.01)\\
-$mpib_{d}$&0.03****&0.28****&\textbf{-0.02}****&\textbf{-0.25}****\\
-\textbf{effect negative} &(0.00)&(0.02)&(0.00)&(0.01)\\
-$mpib_{o}$&\textbf{0.02}****&\textbf{0.32}****&-0.00&-0.14****\\
-\textbf{effect positive} &(0.00)&(0.02)&(0.00)&(0.01)\\
-$$&&&&\\
-%&()&()&()&()&()&()\\
-gravity controls &No&No&Yes&Yes \\ 
-financial soph. ctrls &No&No&Yes&Yes \\
-regional &No&No&Yes&Yes \\
+$log(GDP_{o})$&0.160&(0.204)&&-0.338&(0.246)\\
+$log(GDP_{d})$&1.705****&(0.226)&&1.122***&(0.364)\\
+$log(distw_{od})$&-0.758****&(0.059)&&-0.669****&(0.051)\\
+$mpif_{d}$&-0.061**&(0.026)&&-0.071***&(0.026)\\
+$mpif_{o}$&-0.102****&(0.028)&&-0.108****&(0.027)\\
+$mpib_{d}$&0.024&(0.033)&&0.030&(0.033)\\
+$mpib_{o}$&0.097**&(0.045)&&0.105**&(0.044)\\
+Controls:&&&&&\\
+gravity &No&&&Yes& \\ 
+financial sophistication &No&&&Yes& \\
 \hline
-\multicolumn{5}{l}{\tiny Significance at the 10\%, 5\%, 1\% and 0.1\% levels is denoted by *, **, *** and **** respectively.}\\
-\multicolumn{5}{l}{\tiny Standard errors in parentheses.}\\
-\multicolumn{5}{l}{\tiny The effects that are in line with hypotheses are bolded.}\\
+$R^2$&0.86&&&0.91&\\
+\hline
+\multicolumn{6}{l}{Standard errors adjusted for 3 509 clusters. Reported in parantheses. }\\
+\hline
+\multicolumn{6}{l}{\tiny Significance at the 10\%, 5\%, 1\% and 0.1\% levels is denoted by *, **, *** and ****.}\\
 \end{tabular}
-\caption{Average marginal effects and hypotheses}
+\caption{Results of the PPML estimation}
 \label{tab:results}
 \end{table}
 \end{frame}
 
-%In this table I have the marginal effects of either a percent change in the log-variables or a unit change in the integer variables interpreted as percent changes on the probability of dependent variable being positive and on the level of positive holdings. 
-%I find some of these effects to be surprisingly large, and would be careful of putting too much weight on the size of these effects at least before proper robustness checks. Some of these feel quite believable, say the 2 % increase in probability of a positive level of international lending after one unit increase in mpib_o, but that the level of positive lending should increase 32 % is quite doubtful, even without considering that these effects change a lot across the three specifications. 
-%It is not however unheard of to fund these average marginal effects on bilateral flows or holdings to be very large. So this might in fact reflect some bias in the gravity model, perhaps due to estimating it in the log-linearized form. Thus using the PPML method at least as a robustness check would probably be very sensible. 
+\begin{frame}{Effects of the macroprudential tools}
+    \begin{block}{Macroprudential regulation aimed at financial institutions:}
+    \begin{itemize}
+        \item \textbf{Negative effect of macroprudential tools aimed at financial institutions} regardless of whether the implementing country is the origin country or the destination country
+        \item Both $mpif_{d}$ and $mpif_{o}$ negative and highly significant
+        \item Means that foreign banks retreat from more heavily regulated markets, but also that \textbf{domestic banks reduce foreign lending as a reaction to domestic regulation}
+        \item Contrary to prior results showing that macroprudential regulation has an expansionary effect on cross-border lending
+        %\item Should this be considered in parallel with what happens to domestic lending by domestic banks?
+    \end{itemize}
+    \end{block}
+\end{frame}
 
-\begin{frame}{Interpreting the marginal effects}
-\tiny
+\begin{frame}{Effects of the macroprudential tools}
+    \begin{block}{Macroprudential regulation aimed at borrowers:}
+    \begin{itemize}
+        \item \textbf{Positive effect of macroprudential tools aimed at borrowers} regardless of whether the implementing country is the origin country or the destination country
+        \item Both $mpib_{d}$ and $mpib_{o}$ positive, but only $mpib_{o}$ significant
+        \item Means that when domestic regulation is implemented, domestic banks move increase credit to foreign markets (in accordance with the hypothesis)
+    \end{itemize}
+    \end{block}
+\end{frame}
+
+
+\begin{frame}{Robustness checks of the PPML estimation}
 \begin{table}[!h]
+\tiny
 \centering
-\begin{tabular}{ l l l l l}
+\begin{tabular}{ l l l l l l}
 \hline
-Specification&(1)&&(2)& \\
-Depvar: $log(ba_{od}+1)$&Participation&Level&Participation&Level\\
+Specification&(3)&&&(4)& \\
+Depvar: $ba_{od}$&&&&&\\
 \hline
-$log(GDP_{o}+1)$, \%-change&0.08\%&0.59\%&0.08\%&0.62\%\\
-$$&&&&\\
-$log(GDP_{d}+1)$, \%-change&0.09\%&0.60\%&0.09\%&0.61\%\\
-$$&&&&\\
-$log(distw_{od}+1)$, \%-change&-0.16\%&-0.81\%&-0.10\%&-0.88\%\\
-$$&&&&\\
-$mpif_{d}$, unit change&-1\%&-17\%&\textbf{2\%}&-10\%\\
-\textbf{effect positive}  &&&&\\
-$mpif_{o}$, unit change&\textbf{-2\%}&\textbf{-17\%}&2\%&\textbf{-9\%}\\
-\textbf{effect negative} &&&&\\
-$mpib_{d}$, unit change&3\%&28\%&\textbf{-2\%}&\textbf{-25\%}\\
-\textbf{effect negative} &&&&\\
-$mpib_{o}$, unit change&\textbf{2\%}&\textbf{32\%}&\textit{-0\%}&-14\%\\
-\textbf{effect positive} &&&&\\
-$$&&&&\\
-%&()&()&()&()&()&()\\
-gravity controls &No&No&Yes&Yes \\ 
-financial soph. ctrls &No&No&Yes&Yes \\
-regional &No&No&Yes&Yes \\
+$log(GDP_{o})$&-0.329&(0.246)&&-0.338&(0.246)\\
+$log(GDP_{d})$&1.121***&(0.364)&&1.122***&(0.364)\\
+$log(distw_{od})$&-0.678****&(0.049)&&-0.669****&(0.051)\\
+$mpif_{d}$&-0.071***&(0.026)&&-0.071***&(0.026)\\
+$mpif_{o}$&-0.108****&(0.027)&&-0.108****&(0.027)\\
+$mpib_{d}$&0.030&(0.033)&&0.030&(0.033)\\
+$mpib_{o}$&0.105**&(0.045)&&0.105**&(0.044)\\
+Controls:&&&&&\\
+gravity &Smaller set&&&Yes& \\ 
+financial sophistication &Smaller set&&&Yes& \\
+Multilateral resistance: & \multicolumn{2}{l}{Country fixed effects} && \multicolumn{2}{l}{Regional dummies} \\
 \hline
-\multicolumn{5}{l}{\tiny Significance at the 10\%, 5\%, 1\% and 0.1\% levels is denoted by *, **, *** and **** respectively.}\\
+$R^2$&0.91&&&0.91&\\
+\hline
+\multicolumn{6}{l}{Standard errors adjusted for 3 509 clusters. Reported in parantheses. }\\
+\hline
+\multicolumn{6}{l}{\tiny Significance at the 10\%, 5\%, 1\% and 0.1\% levels is denoted by *, **, *** and ****.}\\
 \end{tabular}
-\caption{The percent changes in the dependent variable associated with a change in controls}
-\label{tab:percentchange}
+\caption{Results with a different set of controls}
+\label{tab:robust1}
 \end{table}
+\end{frame}
+
+\begin{frame}{Robustness checks of the PPML estimation}
+\begin{table}[!h]
+\tiny
+\centering
+\begin{tabular}{ l l l l l l}
+\hline
+Specification&(5)&&&(6)& \\
+Depvar: $ba_{od}$&&&&&\\
+\hline
+$log(GDP_{o})$&-0.473&(0.658)&&0.173&(0.315)\\
+$log(GDP_{d})$&0.893&(0.773)&&1.87***&(0.482)\\
+$log(distw_{od})$&-0.602****&(0.054)&&-0.587****&(0.059)\\
+$mpif_{d}$&-0.100****&(0.031)&&-0.097****&(0.027)\\
+$mpif_{o}$&-0.118****&(0.031)&&-0.128****&(0.030)\\
+$mpib_{d}$&0.038&(0.039)&&0.020&(0.033)\\
+$mpib_{o}$&0.131**&(0.055)&&0.104**&(0.047)\\
+Controls:&&&&&\\
+gravity &Yes&&&Yes& \\ 
+financial sophistication &Yes&&&Yes& \\
+\hline
+Sample &\multicolumn{2}{l}{Advanced economies}&&\multicolumn{2}{l}{No offshore centers} \\
+Observations &12 012&&&73 296& \\
+\hline
+$R^2$&0.93&&&0.91&\\
+\hline
+\multicolumn{6}{l}{Standard errors adjusted for k clusters. Reported in parantheses. }\\
+Clusters &497&&&2 990& \\
+\hline
+\multicolumn{6}{l}{\tiny Significance at the 10\%, 5\%, 1\% and 0.1\% levels is denoted by *, **, *** and ****.}\\
+\end{tabular}
+\caption{Results with a different sample}
+\label{tab:robust2}
+\end{table}
+
 \end{frame}
 
 \section{Conclusions}
@@ -554,17 +539,39 @@ regional &No&No&Yes&Yes \\
 %The estimation results point to there being statistically significant marginal effects and that these may be non-negligible. As such my result support the findings that there are cross-border spillovers of macrprudential regulation, but I would not be confident enough to use the exact numbers of percent changes just yet. 
 
 \begin{frame}{Conclusions}
+\begin{itemize}
+    \item My results show that the effects of macroprudential tools do have a statistically significant effect on the bilateral holdings of bank assets.  
+    \item The average effects are however rather small in absolute size, and thus the results support the notion that at least so far, the cross-border spillovers from macroprudential policies have been rather modest. 
+    \item Note: the most of the bilateral holdings are very small, in fact zero, thus skewing the mean and thus the average effects downwards. The effects on the very large holdings could potentially be substantial.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Conclusions}
 \begin{block}{Can the gravity model tell us something about the cross-border spillovers of macroprudential regulation through international lending?}
 \begin{itemize}
 \item This indeed appears to be the case
-\item Need for robustness checks using different estimation strategies
-\item Results should be interpreted very carefully
 \end{itemize}
 \end{block}
 \begin{block}{Does the implementation of macroprudential instruments in the origin country or the destination country have an effect on the bilateral cross-border bank asset holdings?}
 \begin{itemize}
-\item There appears to be statistically significant marginal effects and they may be non-negligible
-\item Support for there being significant cross-border spillovers of macroprudential regulation
+\item There are statistically significant marginal effects from implementing macroprudential policies to international lending, but the size of these effects is rather limited
+\item Support for there being cross-border spillovers of macroprudential regulation
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{What's next?}
+\begin{block}{Robustness checks}
+\begin{itemize}
+\item The size of the banking sector in the origin country en lieu the GDP? Logic: supply of credit depend on the size of the banking sector, demand for credit depends on the size of the economy
+\end{itemize}
+\end{block}
+\begin{block}{Very preliminary thoughts on the second paper:}
+\begin{itemize}
+\item Perhaps an extension of this, making more use of the more recent developments on the trade side of gravity equations?
+\item e.g. Eaton-Kortum-framework linking a structural model to a gravity equation 
+\item e.g. a dynamic gravity model with endogenous country size and asset accumulation (Olivero, Yotov 2012)
 \end{itemize}
 \end{block}
 \end{frame}
