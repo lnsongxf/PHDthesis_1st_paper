@@ -142,15 +142,15 @@
 %My choice is not the PPML, but instead a different way to address the limited nature of my dependent variable. This estimation method is called the double-hurdle model and it was first proposed by Cragg in the early seventies and developed further by Heckmann. This model ensures an appropriate treatment of zero observations and it considers zeros as true zeros, that is not as missing values as the sample selection model does. An additional feature of the model is that allows for breaking the problem into two equation: a participation equation that estimates the determinants of the dependent variable being positive and a level equation which estimates the determinants of the level of the dependent variable, given that it is positive. The decision to invest in a foreign country or to extend credit to foreign borrowers, is intuitively quite easy to separate into these different stages of decision making, thus adding to the double-hurdle model's appeal. Now a Tobit model can do this, but what really makes the double-hurdle model interesting is that it allows for the two processes to be different. The size of the coefficients, or their sign can be different in the two equations, even the independent variables can be different altogether. A classic example of the power of the double-hurdle model is the effect of education on smoking: a more educated person is less likely to smoke, i.e. the coefficient is negative in the participation equation, but given that a person smokes, a more educated person is likely to smoke more, i.e. the coefficient is positive in the level equation. 
 
 \begin{frame}{Possible estimations methods}
-\begin{block}{Bilateral data:}
+\begin{block}{Bilateral data on international lending:}
 Large share of zero observations, heteroskedasticity and clustering
 \end{block}
 
 \begin{block}{Some methods that have been used in similar set-ups:}
 \begin{itemize}
-\item Panel fixed effects OLS with zero observations excluded (e.g. Portes and Rey, 2005) - \textit{worst option}
-\item Panel probit with a dichotomous dependent variable (proposed Drakos et al., 2014) - \textit{lots of lost information}
-\item A two-stage model such as the double-hurdle model (e.g. Cragg, 1971, Heckman, 1976) - \textit{strict distributional assumptions \& a computational nightmare}
+\item Panel fixed effects OLS with zero observations excluded (e.g. Portes and Rey, 2005) - \textit{basically the worst option}
+\item Panel probit with a dichotomous dependent variable (proposed by Drakos et al., 2014) - \textit{lots of lost information}
+\item A two-stage model such as the double-hurdle model (developed by Cragg, 1971, and Heckman, 1976) - \textit{strict distributional assumptions \& a computational nightmare}
 \item \textbf{Poisson pseudo-maximum-likelihood (PPML) approach} (proposed by Santos Silva and Tenreyro, 2006)
    \end{itemize}
 \end{block}
@@ -380,12 +380,15 @@ where the origin and destination country fixed effects are included in $O_{ot}$ 
 %Let's next consider the hypotheses in a bit more detail to better fit them into the bilateral gravity framework. Recall first that I had to hypotheses: one concerning regulation aimed at financial institutions and one for regulation aimed at borrowers. The important assumption here underpinning the different effects of these regulations is that they differ in scope.
 
 \begin{frame}{Hypotheses - regulations differ}
+
+Two hypotheses following Reinhardt and Sowerbutts (2015), assuming the scope of different regulation depends on the typ of regulation:
+
 \begin{block}{Hypothesis 1} 
-Implementing macroprudential regulation aimed at domestic financial institutions leads to domestic agents borrowing more abroad.
+Implementing macroprudential regulation aimed at \textbf{domestic financial institutions} leads to domestic agents borrowing more abroad.
 \end{block}
 
 \begin{block}{Hypothesis 2} 
-Implementing macroprudential regulation aimed at domestic borrowers does not lead to more borrowing from abroad, but instead domestic banks might move lending to less regulated markets.
+Implementing macroprudential regulation aimed at\textbf{ domestic borrowers} does not lead to more borrowing from abroad, but instead domestic banks might move lending to less regulated markets.
 \end{block}
 \end{frame}
 
@@ -459,7 +462,7 @@ $R^2$&0.86&&&0.91&\\
     \begin{itemize}
         \item \textbf{Positive effect of macroprudential tools aimed at borrowers} regardless of whether the implementing country is the origin country or the destination country
         \item Both $mpib_{d}$ and $mpib_{o}$ positive, but only $mpib_{o}$ significant
-        \item Means that when domestic regulation is implemented, domestic banks move increase credit to foreign markets (in accordance with the hypothesis)
+        \item Means that when domestic regulation is implemented, domestic banks increase credit to foreign markets (in accordance with the hypothesis)
     \end{itemize}
     \end{block}
 \end{frame}
