@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.6.5)  11 SEP 2018 12:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.6.5)  12 SEP 2018 09:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -699,11 +699,7 @@ File: uni-global.def 2013/05/13 UCS: Unicode global data
 \uc@combtoksb=\toks46
 \uc@temptokena=\toks47
 )
-(./201809_PhDWG.aux
-
-LaTeX Warning: Label `fig2' multiply defined.
-
-)
+(./201809_PhDWG.aux)
 \openout1 = `201809_PhDWG.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
@@ -889,16 +885,16 @@ File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
 ap/pdftex.map}
 
 ]
-LaTeX Font Info:    Try loading font information for U+msa on input line 46.
+LaTeX Font Info:    Try loading font information for U+msa on input line 121.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 46.
+LaTeX Font Info:    Try loading font information for U+msb on input line 121.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Try loading font information for OT1+mathkerncmss on input 
-line 46.
+line 121.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2013/03/27 Fontinst v1.933 font definitions for OT1/ma
@@ -913,14 +909,14 @@ thkerncmss.
 
 ] [6
 
-] [7
-
 ]
-Overfull \hbox (10.0164pt too wide) in paragraph at lines 177--177
+Overfull \hbox (7.7943pt too wide) in paragraph at lines 220--220
  [] 
  []
 
-[8
+[7
+
+] [8
 
 ] [9
 
@@ -940,64 +936,25 @@ Overfull \hbox (10.0164pt too wide) in paragraph at lines 177--177
 
 ] [17
 
-]
-<scatter_lfit_log1_ba_od_log1_distw.png, id=761, 479.7925pt x 348.30125pt>
-File: scatter_lfit_log1_ba_od_log1_distw.png Graphic file (type png)
-<use scatter_lfit_log1_ba_od_log1_distw.png>
-Package pdftex.def Info: scatter_lfit_log1_ba_od_log1_distw.png  used on input 
-line 383.
-(pdftex.def)             Requested size: 307.28987pt x 223.07678pt.
+] [18
 
-Overfull \vbox (36.60774pt too high) detected at line 383
- []
+] [19
 
-[18
+] [20
 
- <./scatter_lfit_log1_ba_od_log1_distw.png (PNG copy)>]
-<scatter_lfit_log_ba_od_log_distw.png, id=800, 479.7925pt x 348.30125pt>
-File: scatter_lfit_log_ba_od_log_distw.png Graphic file (type png)
-<use scatter_lfit_log_ba_od_log_distw.png>
-Package pdftex.def Info: scatter_lfit_log_ba_od_log_distw.png  used on input li
-ne 390.
-(pdftex.def)             Requested size: 307.28987pt x 223.07678pt.
-pdfTeX warning (ext4): destination with the same identifier (name{fig2}) has be
-en already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.390 \end{frame}
-                 
-Overfull \vbox (36.60774pt too high) detected at line 390
- []
-
-[19
-
- <./scatter_lfit_log_ba_od_log_distw.png (PNG copy)>] [20
+] [21
 
 ]
-Overfull \vbox (9.11577pt too high) detected at line 452
- []
-
-[21
-
-] [22
+[22
 
 ] [23
 
+] [24
+
 ]
-Overfull \vbox (7.94482pt too high) detected at line 558
- []
-
-[24
-
-] [25
-
-] (/usr/local/texlive/2018/texmf-dist/tex/latex/ucs/data/uni-32.def
+(/usr/local/texlive/2018/texmf-dist/tex/latex/ucs/data/uni-32.def
 File: uni-32.def 2013/05/13 UCS: Unicode data U+2000..U+20FF
-)
-Overfull \vbox (50.1158pt too high) detected at line 578
- []
-
-[26
+) [25
 
 ]
 \tf@nav=\write6
@@ -1009,24 +966,21 @@ Overfull \vbox (50.1158pt too high) detected at line 578
 \tf@snm=\write8
 \openout8 = `201809_PhDWG.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 580.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 580.
- (./201809_PhDWG.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 580.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 580.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 600.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 600.
+
+(./201809_PhDWG.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 600.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 600.
 Package rerunfilecheck Info: File `201809_PhDWG.out' has not changed.
-(rerunfilecheck)             Checksum: B1B112D4278FED5B4C007EBCD20E5368;357.
-
-
-LaTeX Warning: There were multiply-defined labels.
-
+(rerunfilecheck)             Checksum: 71ECCC586DCFE926C1FB669672783492;284.
  ) 
 Here is how much of TeX's memory you used:
- 18082 strings out of 492649
- 340896 string characters out of 6129623
- 462123 words of memory out of 5000000
- 21475 multiletter control sequences out of 15000+600000
- 16080 words of font info for 58 fonts, out of 8000000 for 9000
+ 18051 strings out of 492649
+ 340240 string characters out of 6129623
+ 458185 words of memory out of 5000000
+ 21453 multiletter control sequences out of 15000+600000
+ 15447 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,19n,56p,1618b,764s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
@@ -1035,14 +989,16 @@ Here is how much of TeX's memory you used:
 sr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></us
 r/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr
 /local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/l
-ocal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/
-local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/
-local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/l
-ocal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on 201809_PhDWG.pdf (26 pages, 214370 bytes).
+ocal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/loc
+al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/lo
+cal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/lo
+cal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/loc
+al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loca
+l/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb>
+Output written on 201809_PhDWG.pdf (25 pages, 180524 bytes).
 PDF statistics:
- 1160 PDF objects out of 1200 (max. 8388607)
- 1069 compressed objects within 11 object streams
- 72 named destinations out of 1000 (max. 500000)
- 123 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1036 PDF objects out of 1200 (max. 8388607)
+ 950 compressed objects within 10 object streams
+ 66 named destinations out of 1000 (max. 500000)
+ 97 words of extra memory for PDF output out of 10000 (max. 10000000)
 
